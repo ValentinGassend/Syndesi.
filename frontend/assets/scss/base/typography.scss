@@ -1,0 +1,28 @@
+$font-primary: 'Archivo', sans-serif;
+//Fonts
+/* Webfont: Dirtyline36Daysoftype2022-Reg */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 900;
+  src:
+  url('../fonts/Archivo-Black.ttf') format('ttf'); /* Modern Browsers */
+  //url('../fonts/Dirtyline 36daysoftype 2022.woff2') format('woff2'); /* Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  src:
+          url('../fonts/Archivo-Bold.ttf') format('ttf'); /* Modern Browsers */
+  //url('../fonts/Dirtyline 36daysoftype 2022.woff2') format('woff2'); /* Modern Browsers */
+}
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  src:
+          url('../fonts/Archivo-Regular.ttf') format('ttf'); /* Modern Browsers */
+  //url('../fonts/Dirtyline 36daysoftype 2022.woff2') format('woff2'); /* Modern Browsers */
+}

@@ -1,0 +1,70 @@
+html {
+  font-size: calc(1em * 0.625);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  pointer-events: all;
+}
+
+body {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  color: $color_font;
+  font-family: $font-primary;
+  font-size: 1.4rem;
+  background-color: $color_primary;
+  --x: 0;
+  --y: 0;
+}
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 100%;
+
+  @include media(">small") {
+    width: 770px;
+  }
+
+  @include media(">medium") {
+    width: 990px;
+  }
+
+  @include media(">large") {
+    width: 1160px;
+  }
+}
+.overlay {
+position: fixed;
+  .logo {
+    position: fixed;
+    left: 4rem;
+    top: 3.2rem;
+  }
+  .info {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 4rem;
+    top: 3.2rem;
+    &-name {
+      text-transform: uppercase;
+      font-size: 3.2rem;
+      font-weight: 700;
+    }
+    &-localisation {
+      font-style: italic;
+      font-size: 2.4rem;
+      font-weight: 500;
+    }
+  }
+  .soundToogle {
+    position: fixed;
+    right: 4rem;
+    bottom: 3.2rem;
+  }
+  .brainMap {
+    position: fixed;
+    left: 4rem;
+    bottom: 3.2rem;
+  }
+}

@@ -1,0 +1,226 @@
+/* Base */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Webfont: Dirtyline36Daysoftype2022-Reg */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Archivo-Black.ttf") format("ttf"); /* Modern Browsers */
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Archivo-Bold.ttf") format("ttf"); /* Modern Browsers */
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Archivo-Regular.ttf") format("ttf"); /* Modern Browsers */
+}
+/* Webfont: Dirtyline36Daysoftype2022-Reg */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Archivo-Black.ttf") format("ttf"); /* Modern Browsers */
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Archivo-Bold.ttf") format("ttf"); /* Modern Browsers */
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Archivo-Regular.ttf") format("ttf"); /* Modern Browsers */
+}
+/* Abstract */
+/* Components */
+/* Layout */
+html {
+  font-size: 0.625em;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  pointer-events: all;
+}
+
+body {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  color: #FFFFFF;
+  font-family: "Archivo", sans-serif;
+  font-size: 1.4rem;
+  background-color: #20105C;
+  --x: 0;
+  --y: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 100%;
+}
+
+.overlay {
+  position: fixed;
+}
+.overlay .logo {
+  position: fixed;
+  left: 4rem;
+  top: 3.2rem;
+}
+.overlay .info {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  right: 4rem;
+  top: 3.2rem;
+}
+.overlay .info-name {
+  text-transform: uppercase;
+  font-size: 3.2rem;
+  font-weight: 700;
+}
+.overlay .info-localisation {
+  font-style: italic;
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+.overlay .soundToogle {
+  position: fixed;
+  right: 4rem;
+  bottom: 3.2rem;
+}
+.overlay .brainMap {
+  position: fixed;
+  left: 4rem;
+  bottom: 3.2rem;
+}
+
+/* Pages */
+.content .hero {
+  height: 100vh;
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.content .hero-wrapperTitle {
+  display: flex;
+  flex-direction: row;
+  max-width: 98.5rem;
+  align-items: center;
+  margin: 0 auto;
+  line-height: 7.7rem;
+}
+.content .hero-titleAccent {
+  font-weight: 900;
+  font-size: 16rem;
+  color: #C52D48;
+}
+.content .hero-title {
+  font-weight: 700;
+  font-size: 6.4rem;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: uppercase;
+}
+.content .hero-paragraph {
+  display: flex;
+  gap: 1.6rem;
+  flex-direction: column;
+  text-align: center;
+  max-width: 98.5rem;
+  font-size: 2rem;
+  font-weight: 400;
+  align-items: center;
+  margin: 9.1rem auto 0;
+  line-height: 2.4rem;
+}
+.content .firstScale {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10rem auto;
+}
+.content .firstScale-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.content .firstScale-illustration {
+  margin: 3.2rem 0;
+  position: relative;
+}
+.content .firstScale-illustration--set {
+  width: 75.8rem;
+  position: relative;
+}
+.content .firstScale-illustration--steak {
+  position: absolute;
+  width: 26.2rem;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.content .firstScale-content {
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 6.4rem;
+  gap: 0.25em;
+}
+
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,79 @@
+.content {
+  .hero {
+    height: 100vh;
+    margin: auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &-wrapperTitle{
+      display: flex;
+      flex-direction: row;
+      max-width: 98.5rem;
+      align-items: center;
+      margin: 0 auto;
+      line-height: 7.7rem;
+
+    }
+    &-titleAccent {
+      font-weight: 900;
+      font-size: 16rem;
+      color: $color_secondary;
+    }
+    &-title {
+      font-weight: 700;
+      font-size: 6.4rem;
+      color: $color_font;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    &-paragraph {
+      display: flex;
+      gap: 1.6rem;
+      flex-direction: column;
+      text-align: center;
+      max-width: 98.5rem;
+      font-size: 2rem;
+      font-weight: 400;
+      align-items: center;
+      margin: 9.1rem auto 0;
+      line-height: 2.4rem;
+    }
+  }
+  .firstScale {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10rem auto;
+    &-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    &-illustration {
+      margin: 3.2rem 0;
+      position: relative;
+      &--set {
+        width: 75.8rem;
+        position: relative;
+      }
+      &--steak {
+        position: absolute;
+        width: 26.2rem;
+        height: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+    }
+    &-content {
+      display: flex;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 6.4rem;
+      gap: 0.25em;
+      &--data {
+
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <nav class="nav">
+        <a href="/intro" class="nav__link" data-link>Intro</a>
+        <a href="/content" class="nav__link" data-link>Content</a>
+        <a href="/end" class="nav__link" data-link>End</a>
+
+    </nav>
+    <div class="overlay">
+        <img src="frontend/static" class="logo">
+        <div class="info">
+            <span class="info-name">Pensée de Iel</span>
+            <span class="info-localisation">lobe frontal</span>
+        </div>
+        <span class="soundToogle"></span>
+        <img src="frontend/static" class="brainMap">
+    </div>
+    <div id="app"></div>
+    <script type="module" src="/static/js/index.js"></script>
+</body>
+</html>
