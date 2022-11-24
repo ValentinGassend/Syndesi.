@@ -1,0 +1,56 @@
+
+.overlay {
+    z-index: 1000;
+    .soundToogle {
+        display: flex;
+        border: 0.2rem solid $color_white;
+        gap: 0.3rem;
+        padding: 0.8rem 1.6rem;
+        width: 8.4rem;
+        height: 5.5rem;
+        align-items: center;
+        justify-content: center;
+        .line {
+
+            &-first {
+                min-width: 0.8rem;
+                animation: music 2.5s infinite alternate linear .5s;
+
+            }
+
+            &-second {
+                min-width: 0.8rem;
+                animation: music 2.5s infinite alternate linear 1s;
+
+            }
+
+            &-third {
+                min-width: 0.8rem;
+                animation: music 2.5s infinite alternate linear 1.5s;
+
+            }
+
+            &-four {
+                min-width: 0.8rem;
+                animation: music 2.5s infinite alternate linear 2s;
+
+            }
+
+            &-five {
+                min-width: 0.8rem;
+                animation: music 2.5s infinite alternate linear 2.5s;
+
+            }
+        }
+    }
+}
+
+@keyframes music {
+
+    from {
+        height: 2rem;
+    }
+    to {
+        height: 4rem;
+    }
+}

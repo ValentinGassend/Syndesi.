@@ -1,79 +1,359 @@
 .content {
-  .hero {
-    height: 100vh;
-    margin: auto 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    &-wrapperTitle{
-      display: flex;
-      flex-direction: row;
-      max-width: 98.5rem;
-      align-items: center;
-      margin: 0 auto;
-      line-height: 7.7rem;
 
-    }
-    &-titleAccent {
-      font-weight: 900;
-      font-size: 16rem;
-      color: $color_secondary;
-    }
-    &-title {
-      font-weight: 700;
-      font-size: 6.4rem;
-      color: $color_font;
-      text-align: center;
-      text-transform: uppercase;
-    }
-    &-paragraph {
-      display: flex;
-      gap: 1.6rem;
-      flex-direction: column;
-      text-align: center;
-      max-width: 98.5rem;
-      font-size: 2rem;
-      font-weight: 400;
-      align-items: center;
-      margin: 9.1rem auto 0;
-      line-height: 2.4rem;
-    }
-  }
-  .firstScale {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10rem auto;
-    &-title {
-      font-size: 2.4rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    &-illustration {
-      margin: 3.2rem 0;
-      position: relative;
-      &--set {
-        width: 75.8rem;
-        position: relative;
-      }
-      &--steak {
-        position: absolute;
-        width: 26.2rem;
-        height: auto;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-      }
-    }
-    &-content {
-      display: flex;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 6.4rem;
-      gap: 0.25em;
-      &--data {
+    .hero {
+        margin: auto 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 7.2rem;
 
-      }
+        &-title {
+            font-weight: 700;
+            font-size: 9.6rem;
+            color: $color_font;
+            text-align: center;
+            line-height: 120%;
+            text-transform: uppercase;
+        }
+
+        &-wrapperParagraph {
+            display: flex;
+            gap: 1.6rem;
+            font-family: $ff_2;
+            flex-direction: column;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 400;
+            align-items: center;
+            line-height: 120%;
+        }
+
+        &-wrapperData {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            width: min-content;
+            text-align: center;
+        }
+
+        &-data--count {
+            width: max-content;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 120%;
+            padding: 1.1rem 2.2rem;
+            color: $color_secondary;
+            border: 0.4rem solid $color_secondary;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        &-data--text {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 120%;
+            color: $color_secondary;
+        }
     }
-  }
+
+    .scale {
+        &-1, &-2, &-3, &-4 {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            gap: 3.6rem;
+
+        }
+
+        &-1 {
+            &--set, &--data {
+                margin: auto;
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-content: center;
+
+                &Number {
+                    font-weight: 700;
+                    line-height: 120%;
+                    font-size: 9.6rem;
+                }
+
+                &Text {
+                    font-weight: 700;
+                    line-height: 120%;
+                    font-size: 4.8rem;
+                }
+            }
+
+            &--steak {
+                margin: auto;
+                position: relative;
+            }
+        }
+
+        &-2 {
+            &--lottie {
+                opacity: 0;
+                width: auto;
+                height: auto;
+                //z-index: -1;
+            }
+        }
+
+        &-3 {
+            &--images {
+                z-index: -1;
+            }
+
+            &--agriculture,
+            &--consommation,
+            &--embalage,
+            &--supermarche,
+            &--transformation,
+            &--transport,
+            &--outline {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                height: 38.5rem;
+                transform: translate(-50%, -50%);
+                transition: 1s linear 1s;
+
+                &.active {
+                    .scale-3--agricultureText,
+                    .scale-3--consommationText,
+                    .scale-3--embalageText,
+                    .scale-3--supermarcheText,
+                    .scale-3--transformationText,
+                    .scale-3--transportText {
+                        opacity: 1;
+
+                        &Image {
+                            scale: 1.1;
+                        }
+                    }
+                }
+
+                &Text {
+                    position: absolute;
+                    transition: 1s linear 2.5s;
+                    opacity: 0;
+                }
+
+                &Image {
+                    //position: absolute;
+                    height: 38.5rem;
+                    //scale: 1.1;
+                }
+
+                &Title {
+                    font-weight: 700;
+                    font-size: 3.2rem;
+                    line-height: 120%;
+                }
+
+                &Paragraph {
+                    font-family: $ff_2;
+                    font-weight: 700;
+                    font-size: 1.6rem;
+                    line-height: 120%;
+                }
+            }
+
+            &--agriculture {
+                &.active {
+                    transform: translate(-165%, -50%);
+                }
+
+                &Text {
+                    left: 50%;
+                    top: -20%;
+                    transform: translateX(-50%);
+                }
+                &Image{
+                    transition: 1s linear;
+                    &.active {
+                        transform: translate(0, 100vh);
+
+                    }
+                    &---path{
+                        transform: translate(0, 0vh);
+
+                    }
+                }
+            }
+
+            &--consommation {
+                &.active {
+                    transform: translate(-50%, -60%);
+                }
+
+                &Text {
+                    right: 0%;
+                    top: -20%;
+                }
+            }
+
+            &--embalage {
+                &.active {
+                    transform: translate(-40%, -40%);
+
+                }
+
+                &Text {
+                    left: 50%;
+                }
+            }
+
+            &--supermarche {
+                &.active {
+                    transform: translate(-35%, -43%);
+
+                }
+
+                &Text {
+                    right: 0;
+                    bottom: 10%;
+                    transform: translateX(100%);
+                }
+            }
+
+            &--transformation {
+                &.active {
+                    transform: translate(-30%, -50%);
+                }
+
+                &Text {
+                    right: 0;
+                    bottom: 45%;
+                    transform: translateX(115%);
+                }
+            }
+
+            &--transport {
+                &.active {
+                    transform: translate(-30%, -55%);
+
+                }
+
+                &Text {
+                    right: 0;
+                    top: 0;
+                    transform: translateX(115%);
+                }
+            }
+
+            &--outline {
+                &.active {
+                    opacity: 40%;
+                }
+            }
+        }
+
+        &-4 {
+            &--treeBg {
+                display: none;
+            }
+
+            &--container {
+                height: 80vh;
+                display: flex;
+                gap: 6.8rem;
+            }
+
+            &--category {
+                gap: 2.4rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            &--illustration {
+                height: 100%;
+
+                &---img {
+                    height: 100%;
+                }
+
+                &---path {
+                    display: none;
+                }
+
+                &---svg {
+                    display: none;
+
+                }
+
+            }
+
+            &--Number {
+                font-weight: 700;
+                line-height: 120%;
+                font-size: 3.2rem;
+            }
+
+            &--description {
+                font-family: $ff_2;
+                font-weight: 500;
+                line-height: 90%;
+                font-size: 1.6rem;
+            }
+        }
+
+        &--title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            font-family: $ff_1;
+            line-height: 120%;
+        }
+
+        &-map {
+            height: 80vh;
+        }
+    }
+
+}
+
+.map-overlay {
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    position: absolute;
+    width: 25%;
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.map-overlay .map-overlay-inner {
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.map-overlay h2 {
+    line-height: 24px;
+    display: block;
+    margin: 0 0 10px;
+}
+
+.map-overlay .legend .bar {
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, #fca107, #7f3121);
+}
+
+.map-overlay input {
+    background-color: transparent;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    cursor: ew-resize;
 }

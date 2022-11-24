@@ -7,22 +7,26 @@
     <link rel="stylesheet" href="/static/css/index.css">
 </head>
 <body>
-    <nav class="nav">
-        <a href="/intro" class="nav__link" data-link>Intro</a>
-        <a href="/content" class="nav__link" data-link>Content</a>
-        <a href="/end" class="nav__link" data-link>End</a>
-
-    </nav>
-    <div class="overlay">
-        <img src="frontend/static" class="logo">
-        <div class="info">
-            <span class="info-name">Pensée de Iel</span>
-            <span class="info-localisation">lobe frontal</span>
-        </div>
-        <span class="soundToogle"></span>
-        <img src="frontend/static" class="brainMap">
+<div class="overlay">
+    <img src="/static/image/Syndesi.logo.svg" class="logo">
+    <div class="info">
+        <span class="info-name">Pensée de Iel</span>
+        <span class="info-localisation">lobe frontal</span>
     </div>
-    <div id="app"></div>
-    <script type="module" src="/static/js/index.js"></script>
+    <div class="soundToogle">
+        <img class="line-first" src="/static/image/line-third.svg">
+        <img class="line-second" src="/static/image/line-third.svg">
+        <img class="line-third" src="/static/image/line-third.svg">
+        <img class="line-four" src="/static/image/line-third.svg">
+        <img class="line-five" src="/static/image/line-third.svg">
+    </div>
+</div>
+
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+<script src="/static/js/scripts/echarts.js" type="module"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.0/dist/echarts.min.js"></script>
+<script type="module" src="/static/js/index.js"></script>
 </body>
 </html>
