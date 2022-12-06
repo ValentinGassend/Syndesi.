@@ -1,6 +1,5 @@
-
 .overlay {
-    z-index: 1000;
+    z-index: 900;
     .soundToogle {
         display: flex;
         border: 0.2rem solid $color_white;
@@ -41,6 +40,29 @@
                 animation: music 2.5s infinite alternate linear 2.5s;
 
             }
+        }
+    }
+    .progressBar {
+        left: 4rem;
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%) scaleY(-1);
+
+        &-bg {
+            position: absolute;
+            top: 2px;
+            clip-path: url(#shape);
+            left: 0;
+            width: 100%;
+            background-color: #C52D48;
+        }
+    }
+    .info {
+        &-name {
+
+        }
+        &-localisation {
+            text-align: end;
         }
     }
 }

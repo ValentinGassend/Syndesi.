@@ -8,7 +8,7 @@ export default class extends AbstractView {
 
     async getHtml() {
         return `
-                <div class="end">
+                <div class="endFrame">
                 <img class="end-illustration" src="./static/image/whole_brained.svg" alt="" srcset="">
                     <section class="hero container view">
                         <h1 class="hero-title">Félicitation Iel</h1>

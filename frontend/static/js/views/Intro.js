@@ -96,7 +96,7 @@ export default class extends AbstractView {
                     himenaeos. </p>
             </div>
         </div>
-        <a href="/content" class="description-btn button-primary">commencer l'expérience</a>
+        <a href="/home" class="description-btn button-primary">commencer l'expérience</a>
     </section>
 </div>
         `;

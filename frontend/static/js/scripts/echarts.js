@@ -2,15 +2,15 @@
 
 window.addEventListener("load", async () => {
     console.log("loaded");
-    var chartDom = document.getElementById('solutionFirst');
+    var chartDom = document.getElementById('solutionSecond--illustration--img');
     var myChart = echarts.init(chartDom);
     var option;
 
     const treeIcone =
         '/static/image/tree_ecosia.svg';
-    const beginYear = 0;
-    const endYear = 2050;
-    const lineCount = 10;
+    var beginYear = 1000;
+    var endYear = 1008;
+    var lineCount = 4;
 // Basic option:
     option = {
         color: ['#e54035'],
@@ -19,7 +19,6 @@ window.addEventListener("load", async () => {
             axisLabel: { show: false },
             axisTick: { show: false },
             splitLine: { show: false },
-            name: beginYear + '',
             nameLocation: 'middle',
             nameGap: 40,
             nameTextStyle: {
@@ -36,14 +35,14 @@ window.addEventListener("load", async () => {
         },
         grid: {
             top: 'center',
-            height: 280
+            height: 304
         },
         series: [
             {
                 name: 'all',
                 type: 'pictorialBar',
                 symbol: 'image://' + treeIcone,
-                symbolSize: [30, 55],
+                symbolSize: [36, 55.5],
                 symbolRepeat: true,
                 data: makeSeriesData(beginYear),
                 animationEasing: 'elasticOut'
@@ -52,14 +51,16 @@ window.addEventListener("load", async () => {
                 name: 'all',
                 type: 'pictorialBar',
                 symbol: 'image://' + treeIcone,
-                symbolSize: [30, 55],
+                symbolSize: [36, 55.5],
                 symbolRepeat: true,
                 data: makeSeriesData(beginYear, true),
                 animationEasing: 'elasticOut'
             }
         ]
     };
-// Make fake data.
+
+    // Make fake data.
+
     function makeCategoryData() {
         var categoryData = [];
         for (var i = 0; i < lineCount; i++) {
@@ -67,48 +68,51 @@ window.addEventListener("load", async () => {
         }
         return categoryData;
     }
+
     function makeSeriesData(year, negative) {
         // make a fake value just for demo.
-        const r = (year - beginYear + 1) * 10;
-        const seriesData = [];
-        for (let i = 0; i < lineCount; i++) {
-            let sign = negative ? -1 * (i % 3 ? 0.9 : 1) : 1 * ((i + 1) % 3 ? 0.9 : 1);
+        var r = (year - beginYear + 1) * 24;
+        var seriesData = [];
+
+        for (var i = 0; i < lineCount; i++) {
+            var sign = (negative ? -1 * (((i - 1) % 2) ? 0.66 : 1.79): 1 * (((i + 2) % 2) ? 0.2: 1.33));
             seriesData.push({
-                value:
-                    sign *
-                    (year <= beginYear + 1
-                        ? Math.abs(i - lineCount / 2 + 0.5) < lineCount / 5
-                            ? 5
-                            : 0
-                        : (lineCount - Math.abs(i - lineCount / 2 + 0.5)) * r),
-                symbolOffset: i % 2 ? ['50%', 0] : undefined
+                value: sign * 2 * (
+                    year <= beginYear + 1
+                        ? (Math.abs(i - lineCount / 2 + 0.5) < lineCount / 5 ? 5 : 0)
+                        : (lineCount - Math.abs(i - lineCount / 2 + 0.5)) * r
+                ),
+                symbolOffset: (i % 2) ['50%'],
             });
         }
         return seriesData;
     }
+
+
 // Set dynamic data.
     var currentYear = beginYear;
     setInterval(function () {
         currentYear++;
-        if (currentYear > endYear) {
+        if (lineCount == 0) {
+            lineCount = 4;
             currentYear = beginYear;
+        }
+        if (currentYear > endYear) {
+            lineCount = 0;
         }
         myChart.setOption({
             xAxis: {
                 name: currentYear
             },
-            series: [
-                {
-                    data: makeSeriesData(currentYear)
-                },
-                {
-                    data: makeSeriesData(currentYear, true)
-                }
-            ]
+            series: [{
+                data: makeSeriesData(currentYear)
+            }, {
+                data: makeSeriesData(currentYear, true)
+            }]
         });
-    }, 800);
+    }, 500);
 
-    option && myChart.setOption(option);
+    myChart.setOption(option);
 
 
 });

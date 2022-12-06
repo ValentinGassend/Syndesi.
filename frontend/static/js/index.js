@@ -2,9 +2,17 @@ import Content from "./views/Content.js";
 import Intro from "./views/Intro.js";
 import End from "./views/End.js";
 import Gallery from "./views/Gallery.js";
-import {gsap, toArray, ScrollTrigger, ScrollToPlugin, MorphSVGPlugin} from "./libs/gsap-public/esm/all.js";
+import {
+    gsap,
+    toArray,
+    ScrollTrigger,
+    ScrollToPlugin,
+    MorphSVGPlugin,
+    Power1,
+    TextPlugin
+} from "./libs/gsap-public/esm/all.js";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MorphSVGPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MorphSVGPlugin, Power1, TextPlugin);
 // import {ScrollTrigger} from "./libs/gsap-public/minified/ScrollTrigger.min.js";
 
 
@@ -83,8 +91,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let animation_duration = "linear";
     let time_duration = 1;
+
+    const items = document.querySelectorAll(".scale-1--dataNumber");
+
+    /////////////////////////////////////////////////////////////////////////
+
+    var cursor = document.querySelector('.cursor');
+    var a = document.querySelectorAll('a');
+    var input = document.querySelectorAll('input');
+
+    document.addEventListener('mousemove', function (e) {
+        var x = e.clientX;
+        var y = e.clientY;
+        cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
+    });
+
+    // document.addEventListener('mousemove', function(e){
+    //     var x = e.clientX;
+    //     var y = e.clientY;
+    //     cursorinner.style.left = x + 'px';
+    //     cursorinner.style.top = y + 'px';
+    // });
+    if (document.getElementById('map')) {
+        document.getElementById('map').addEventListener('mouseover', () => {
+            cursor.classList.add('zoom');
+        });
+        document.getElementById('map').addEventListener('mouseleave', () => {
+            cursor.classList.remove('zoom');
+        });
+    }
+    if (document.getElementsByClassName('cursor_hover')[1]) {
+        document.getElementsByClassName('cursor_hover')[0].addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+        });
+        document.getElementsByClassName('cursor_hover')[0].addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    }
+    if (document.getElementsByClassName('cursor_hover')[1]) {
+        document.getElementsByClassName('cursor_hover')[1].addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+        });
+        document.getElementsByClassName('cursor_hover')[1].addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    }
+    if (document.getElementsByClassName('cursor_hover')[2]) {
+        document.getElementsByClassName('cursor_hover')[2].addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+        });
+        document.getElementsByClassName('cursor_hover')[2].addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    }
+    a.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+        });
+        item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    })
+    input.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            cursor.classList.add('hover');
+        });
+        item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+    })
+
+    ////////////////////////////////////////////////////////////////
+
+
+    gsap.from(items, {
+        textContent: 0.00,
+        duration: 5,
+        ease: Power1.easeIn,
+        snap: {textContent: 0.01},
+        stagger: 1,
+        scrollTrigger: {
+            // immediateRender: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-1",
+            // pin: true,
+            // duration: time_duration,
+            // scrub: true,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
+
+        }
+    });
+
+
     tl.to(".scale-1--steak", {
-        y: "+=98.75vh",
+        y: "+=100vh",
         x: "-20.7vw",
         scale: 1.1,
         // scrub: true,
@@ -92,8 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // immediateRender: true,
         ease: animation_duration,
-        onComplete: console.log("Completed"),
-        onUpdate: console.log("Update"),
+        // onComplete: console.log("Completed"),
+        // onUpdate: console.log("Update"),
 
         // transformOrigin: "50% 50%",
         scrollTrigger: {
@@ -104,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // pin: true,
             // duration: time_duration,
             scrub: true,
-            // markers: true,
             overwrite: true,
             // id: `scale-${i}`
             delay: 0,
@@ -112,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     });
-    console.log(tl);
+    // console.log(tl);
 
 
     tl.to(".scale-2--lottie", {
@@ -133,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // pin: true,
             // duration: time_duration,
             // scrub: true,
-            // markers: true,
             overwrite: true,
             // id: `scale-${i}`
             // delay: 5,
@@ -157,19 +259,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function LottiePlay_phase1() {
-        let lottie = document.querySelector(".scale-2--lottie");
-        lottie.play();
-        lottie.addEventListener("frame", (evt) => {
+        if (document.querySelector(".scale-2--lottie")) {
+            let lottie = document.querySelector(".scale-2--lottie");
+            lottie.play();
+            lottie.addEventListener("frame", (evt) => {
 
-                if (evt.detail.frame > 190) {
-                    if (evt.detail.frame < 195) {
-                        console.log(evt);
-                        lottie.pause();
+                    if (evt.detail.frame > 190) {
+                        if (evt.detail.frame < 195) {
+                            // console.log(evt);
+                            lottie.pause();
+                        }
                     }
-                }
 
-            }
-        );
+                }
+            );
+        }
     }
 
     tl.to(".scale-2--lottie", {
@@ -190,7 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // pin: true,
             // duration: time_duration,
             scrub: true,
-            // markers: true,
             overwrite: true,
             // id: `scale-${i}`
             delay: 0,
@@ -200,19 +303,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function LottiePlay_phase2() {
-        let lottie = document.querySelector(".scale-2--lottie");
-        lottie.play();
-        lottie.addEventListener("frame", (evt) => {
+        if (document.querySelector(".scale-2--lottie")) {
 
-                if (evt.detail.frame > 340) {
-                    if (evt.detail.frame < 345) {
-                        console.log(evt);
-                        lottie.pause();
+            let lottie = document.querySelector(".scale-2--lottie");
+            lottie.play();
+            lottie.addEventListener("frame", (evt) => {
+
+                    if (evt.detail.frame > 340) {
+                        if (evt.detail.frame < 345) {
+                            // console.log(evt);
+                            lottie.pause();
+                        }
                     }
-                }
 
-            }
-        );
+                }
+            );
+        }
     }
 
     function LottieGsap_phase3() {
@@ -237,17 +343,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function LottiePlay_phase3() {
-        let lottie = document.querySelector(".scale-2--lottie");
-        lottie.play();
-        lottie.addEventListener("frame", (evt) => {
-                if (evt.detail.frame > 598) {
-                    lottie.pause();
-                    if (lottie.getLottie().isPaused == true) {
-                        scale2_fadeout();
+        if (document.querySelector(".scale-2--lottie")) {
+
+            let lottie = document.querySelector(".scale-2--lottie");
+            lottie.play();
+            lottie.addEventListener("frame", (evt) => {
+                    if (evt.detail.frame > 598) {
+                        lottie.pause();
+                        if (lottie.getLottie().isPaused == true) {
+                            scale3_fadeIn();
+                        }
                     }
                 }
-            }
-        );
+            );
+        }
     }
 
     function scale2_fadeout() {
@@ -257,26 +366,51 @@ document.addEventListener('DOMContentLoaded', () => {
             overwrite: true,
             duration: time_duration,
             ease: animation_duration,
+            onComplete: () => Scale3_Transition(),
         })
     };
-    tl.from(".scale-3--images", {
-        y: "-101.3vh",
-        x: "-20.7vw",
-        scrub: true,
-        ease: animation_duration,
-        onComplete: () => steak_explosion(),
 
-        scrollTrigger: {
-            start: "top bottom",
-            end: "center center",
-            trigger: ".scale-3",
-            scrub: true,
+    function scale3_fadeIn() {
+        tl.to(".scale-3--images", {
+            opacity: 1,
             overwrite: true,
-            delay: 0,
+            duration: time_duration,
+            ease: animation_duration,
+            onComplete: () => Scale3_rmvClass(),
+
+        })
+    };
+
+    function Scale3_rmvClass() {
+        if (document.querySelector(".scale-3--images")) {
+
+            document.querySelector(".scale-3--images").classList.remove('hidden');
+            scale2_fadeout();
         }
-    });
+    }
+
+    function Scale3_Transition() {
+        tl.from(".scale-3--images", {
+            y: "-100vh",
+            x: "-20.7vw",
+            scale: 1.1,
+            scrub: true,
+            ease: animation_duration,
+            onComplete: () => steak_explosion(),
+
+            scrollTrigger: {
+                start: "top bottom",
+                end: "center center",
+                trigger: ".scale-3",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        });
+    }
 
     function steak_explosion() {
+
         document.querySelector(".scale-3--agriculture").classList.add('active');
         document.querySelector(".scale-3--consommation").classList.add('active');
         document.querySelector(".scale-3--embalage").classList.add('active');
@@ -290,13 +424,13 @@ document.addEventListener('DOMContentLoaded', () => {
             morphSVG: '.scale-4--illustration---path',
             // y: '-=100vh',
             onStart: () => scrolldown_scale4(),
+            onComplete: () => scale3_fadeOut(),
             scrollTrigger: {
                 start: "center center",
                 end: "bottom top",
                 trigger: ".scale-3",
                 pin: ".scale-3--agricultureImage---svg",
                 scrub: true,
-                markers: true,
                 overwrite: true,
                 delay: 0,
             }
@@ -307,6 +441,418 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.scale-3--agricultureImage').classList.add('active');
         // morphSVG: '.scale-3--agricultureImage---path',
     };
+
+
+    function scale4_fadeIn() {
+        tl.to('.scale-4--category---agriculture', {
+                opacity: 1,
+                delay: 0,
+                duration: 1,
+                onStart: () => scale4_fadeinIllustration(),
+
+            }
+        );
+
+    }
+
+    function scale3_fadeOut() {
+        document.querySelector('.scale-3--agricultureImage---path').classList.add('hide');
+        scale4_fadeIn();
+
+    }
+
+    function scale4_fadeinIllustration() {
+        console.log("scale4_fadeinIllustration start");
+        tl.to('.scale-4--illustration', {
+                opacity: 1,
+                delay: 0,
+
+                duration: 0.5,
+                onComplete: () => scale4_fadeinText(),
+            }
+        );
+    }
+
+    function scale4_fadeinText() {
+        document.querySelector(".scale-4--category---urbaine").classList.add('active');
+        document.querySelector(".scale-4--category---miniere").classList.add('active');
+        document.querySelector(".scale-4--category---infrastructure").classList.add('active');
+        document.querySelector(".scale-4--category---agriculture").classList.add('active');
+
+        tl.to('.scale-4--description', {
+                onStart: () => scale4_fadeinNumber(),
+                opacity: 1,
+                delay: 1.5,
+
+                duration: 0.5,
+            }
+        );
+    }
+
+    function scale4_fadeinNumber() {
+        tl.to('.scale-4--Number', {
+                opacity: 1,
+                // delay:1.5,
+                duration: 0.5,
+            }
+        );
+    }
+
+    function scale4_fadeoutNumber() {
+        tl.to('.scale-4--Number', {
+                opacity: 0,
+                // delay:1.5,
+                duration: 0.5,
+            }
+        );
+    }
+
+    tl.to('.scale-4--container', {
+
+            y: '+=200vh',
+            scale: 0.5,
+
+            ease: animation_duration,
+            onStart: () => scale4_fadeout(),
+
+            scrollTrigger: {
+                start: "center center",
+
+                trigger: ".scale-4",
+                endTrigger: ".scale-4--bis",
+                end: "bottom top",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+    tl.fromTo('.scale-4--bis---left', {
+
+            x: '-=10vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '+=15vw',
+            scale: 1.5,
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+    tl.fromTo('.scale-4--bis---right', {
+
+            x: '+=100vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '-=60vw',
+            scale: 1.5,
+            ease: animation_duration,
+            onComplete: () => smokeAppear(),
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+    tl.to('.scale-4--bis', {
+
+            y: '+=100vh',
+            scale: 0.75,
+            ease: animation_duration,
+            scrollTrigger: {
+                start: "center center",
+                trigger: ".scale-4--bis",
+                end: "bottom top",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+
+
+    tl.fromTo('.scale-4--ter---left', {
+
+            x: '-=100vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '+=100vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+    tl.fromTo('.scale-4--ter---right', {
+
+            x: '+=100vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '-=150vw',
+            ease: animation_duration,
+            onComplete: () => treeBackward(),
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+
+    function scale4_fadeout() {
+        document.querySelector(".scale-4--category---urbaine").classList.remove('active');
+        document.querySelector(".scale-4--category---miniere").classList.remove('active');
+        document.querySelector(".scale-4--category---infrastructure").classList.remove('active');
+        document.querySelector(".scale-4--category---agriculture").classList.remove('active');
+        tl.to('.scale-4--description', {
+                onStart: () => scale4_fadeoutNumber(),
+                opacity: 0,
+                // delay:1.5,
+
+                duration: 0.5,
+            }
+        );
+        document.querySelector(".scale-4--container").classList.add('active');
+
+        // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
+        // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
+        // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
+
+    };
+
+    function smokeAppear() {
+        document.querySelector(".scale-4--bis---cloud").classList.remove('hidden');
+
+    }
+
+    function treeBackward() {
+        document.querySelector(".scale-4--ter---left").classList.add('backward');
+        document.querySelector(".scale-4--ter---right").classList.add('backward');
+        document.querySelector(".scale-4--bis").classList.add('hide');
+        document.querySelector(".scale-4").classList.add('hide');
+        document.querySelector(".scale-4--ter---MapContainer").classList.remove('hide');
+        setTimeout(() => {
+            document.querySelector(".scale-4--ter---left").classList.add('remove');
+            document.querySelector(".scale-4--ter---right").classList.add('remove');
+        }, 5000);
+
+
+    }
+
+    addEventListener("click", (e) => {
+        if (jQuery(e.target).hasClass("scale-4--ter---legendCategory----item-----First")) {
+            // document.getElementsByClassName("scale-4--ter---legendCategory----item-----First")[0].classList.remove('active');
+            document.getElementsByClassName("scale-4--ter---legendCategory----item-----Second")[0].classList.remove('active');
+            if (!jQuery('.scale-4--ter---legendCategory----item-----First').hasClass("active")) {
+                (e.target).classList.toggle('active');
+            }
+        }
+        if (jQuery(e.target).hasClass("scale-4--ter---legendCategory----item-----Second")) {
+            document.getElementsByClassName("scale-4--ter---legendCategory----item-----First")[0].classList.remove('active');
+            if (!jQuery('.scale-4--ter---legendCategory----item-----Second').hasClass("active")) {
+                (e.target).classList.toggle('active');
+            }
+        }
+    })
+
+
+    tl.to(".scale-4--ter---MapContainer", {
+        y: "+=90vh",
+        x: "-=10vw",
+        scale: 0.5,
+        // opacity: 0,
+        onStart: () => mapfadeout(),
+        scrub: true,
+        inertia: false,
+        ease: animation_duration,
+        scrollTrigger: {
+            inertia: false,
+            start: "center center",
+            end: "bottom top",
+            trigger: ".scale-4--ter",
+            scrub: true,
+            overwrite: true,
+            delay: 0,
+        }
+    });
+
+    function mapfadeout() {
+        document.querySelector(".scale-4--ter---MapContainer").classList.add('hide');
+
+    }
+
+    tl.from(".dezoom-quinquies--illustration---brain", {
+        y: "-=380vh",
+        scale: 7,
+        delay: 0.1,
+        scrub: true,
+        inertia: false,
+        ease: animation_duration,
+        scrollTrigger: {
+            inertia: false,
+            start: "center center",
+            end: "center center",
+            trigger: ".dezoom",
+            endTrigger: '.dezoom-quinquies',
+            scrub: true,
+            overwrite: true,
+            delay: 0,
+        }
+    });
+
+
+    tl.to('.solutionFirst--illustration---container', {
+            morphSVG: '.solutionFirst--illustration---bottle',
+            onComplete: () => carbon(),
+            duration: 1,
+            scrollTrigger: {
+                // inertia: false,
+                start: "top center",
+                end: "center center",
+                trigger: ".solutionFirst",
+                scrub: true,
+                // overwrite: true,
+                delay: 0,
+            }
+        }
+    );
+
+    function carbon() {
+        tl.to('.solutionFirst--illustration---container', {
+                morphSVG: '.solutionFirst--illustration---carbon',
+                onComplete: () => apple(),
+                delay: 1,
+                duration: 1
+            }
+        );
+    }
+
+    function apple() {
+        tl.to('.solutionFirst--illustration---container', {
+                morphSVG: '.solutionFirst--illustration---apple',
+                onComplete: () => impact(),
+                delay: 1,
+                duration: 1
+            }
+        );
+    }
+
+    function impact() {
+        tl.to('.solutionFirst--illustration---container', {
+                morphSVG: '.solutionFirst--illustration---impact',
+                onComplete: () => bottle(),
+                delay: 1,
+                duration: 1
+            }
+        );
+    }
+
+    function bottle() {
+        tl.to('.solutionFirst--illustration---container', {
+                morphSVG: '.solutionFirst--illustration---bottle',
+                onComplete: () => transport(),
+                delay: 1,
+                duration: 1
+            }
+        );
+    }
+
+    function transport() {
+        tl.to('.solutionFirst--illustration---container', {
+                morphSVG: '.solutionFirst--illustration---transport',
+                onComplete: () => carbon(),
+                delay: 1,
+                duration: 1
+            }
+        );
+    }
+
+    gsap.from('.solutionSecond--illustration--data', {
+        textContent: 0,
+        duration: 4,
+        ease: Power1.easeIn,
+        snap: {textContent: 1},
+        stagger: 1,
+        delay: 1,
+        scrollTrigger: {
+            // immediateRender: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".solutionSecond",
+            // pin: true,
+            // duration: time_duration,
+            // scrub: true,
+            // markers:true,
+            overwrite: true,
+            // id: `scale-${i}`
+            // lazy: false,
+
+        }
+    });
 
 // just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
 
@@ -335,10 +881,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ScrollTrigger.create({
             trigger: view,
             start: "bottom bottom",
-            onEnterBack: () => goToSection(i)
+            onEnterBack: () => goToSection(i),
+
         });
     });
-
 
 // just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
     ScrollTrigger.create({
@@ -347,16 +893,150 @@ document.addEventListener('DOMContentLoaded', () => {
         inertia: false,
         ease: animation_duration,
         duration: time_duration,
+        onUpdate: (ScrollTrigger) =>
+            progressBar(ScrollTrigger.progress, views.length)
+        ,
         overwrite: true,
         scrub: false,
         snap: 1 / (views.length - 1),
         fastScrollEnd: true,
         lazy: false,
-    })
-
+    });
 //SCROLL SNAP END
+    if (document.querySelector('.content')) {
+        document.querySelector('.overlay').style.display = "block";
+        gsap.timeline().to(".info-name", {duration: 1.5, text: "Quotidien de iel"});
+    }
+    if (document.querySelector('.gallery')) {
+        document.querySelector('.overlay').style.display = "block";
+        gsap.timeline().to(".info-name", {duration: 1.5, text: "gallerie synapse"});
+    }
+    if (document.querySelector('.intro')) {
+        document.querySelector('.overlay').style.display = "none";
+    }
+    if (document.querySelector('.endFrame')) {
+        document.querySelector('.overlay').style.display = "none";
+    }
+
+    function progressBar(progress, viewsCount) {
+        let views = progress * (viewsCount - 1) + 1;
+        // console.log(views);
+        let timeL = gsap.timeline();
+        // console.log(document.getElementsByClassName('info-name')[0]);
+        document.getElementsByClassName('progressBar-bg')[0].style.height = progress * 100 + '%';
+        if (viewsCount == 1) {
+            document.getElementsByClassName('progressBar-bg')[0].style.height = 100 + '%';
+        }
+        if (document.querySelector('.content') != null) {
+
+            switch (views) {
+                case 1 :
+                    timeL.to(".info-name", {duration: 1.5, text: "Quotidien de iel"});
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 2 :
+                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone steak"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 3 :
+                    timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 4 :
+                    timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 5:
+                    timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 6 :
+                    timeL.to(".info-name", {duration: 1.5, text: "causes impact carbone steak"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 7 :
+                    timeL.to(".info-name", {duration: 1.5, text: "causes déforestation"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 8 :
+                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone déforestation"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 9 :
+                    timeL.to(".info-name", {duration: 1.5, text: "carte interactive"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 10 :
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 11 :
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 12 :
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 13 :
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 14 :
+                    timeL.to(".info-name", {duration: 1.5, text: "subconscient iel"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 15 :
+                    timeL.to(".info-name", {duration: 1.5, text: "solution 01."});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 16 :
+                    timeL.to(".info-name", {duration: 1.5, text: "solution 02."});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+                case 17 :
+                    timeL.to(".info-name", {duration: 1.5, text: "“THE END”"});
+
+                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    break
+            }
+        } else if (document.getElementsByClassName('gallery') != null) {
+            document.getElementsByClassName('info-name')[0].innerHTML = 'gallerie synapse';
+
+        }
+    }
 
 // Ecosia picto
 
-});
+    if (document.getElementsByClassName("steak-text")[0]) {
+        document.getElementsByClassName("steak-text")[0].addEventListener("mouseover", (e) => {
 
+            if (e.target.classList.contains("__galleryItem")) {
+                // console.log(e.target.parentElement.getElementsByTagName('svg'));
+                e.target.parentElement.getElementsByTagName('svg')[0].style.opacity = '1';
+            }
+        });
+        document.getElementsByClassName("steak-text")[0].addEventListener("mouseout", (e) => {
+
+            if (e.target.classList.contains("__galleryItem")) {
+                // console.log(e.target.parentElement.getElementsByTagName('svg'));
+                e.target.parentElement.getElementsByTagName('svg')[0].style.opacity = '0.5';
+            }
+        })
+    }
+})
