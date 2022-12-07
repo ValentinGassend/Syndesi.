@@ -9,6 +9,12 @@
     {
       "src": "/(.*)",
       "dest": "prod.js"
+    },{
+      "src": "/intro",
+      "dest": "prod.js"
+    },{
+      "src": "/end",
+      "dest": "prod.js"
     }
   ]
 }
