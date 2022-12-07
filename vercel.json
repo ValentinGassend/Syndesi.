@@ -1,27 +1,14 @@
 {
-  "version": 2,
-  "env": {
-  },
   "builds": [
     {
-      "src": "frontend/static/js/index.js",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["frontend/static/js/**"] }
-    },
-    {
-      "src": "frontend/static/**",
-      "use": "@vercel/static",
-      "config": { "includeFiles": ["frontend/static/**"] }
+      "src": "index.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "frontend/index.html"
-    },
-    {
-      "src": "/(.+)",
-      "dest": "frontend/static/js/views/$1"
+      "src": "/(.*)",
+      "dest": "index.js"
     }
   ]
 }
