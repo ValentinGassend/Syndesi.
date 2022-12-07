@@ -20,12 +20,12 @@ window.addEventListener("load", async () => {
         function filterBy(year, intervalStart, interval25, interval50, interval75, intervalEnd) {
             console.log(year);
             map.setPaintProperty(
-                'contry-fills',
+                'contry',
                 'fill-color',
                 [
                     "interpolate",
                     ["linear"],
-                    ["get", "TLC_2014"],
+                    ["get", year],
                     intervalStart,
                     "rgba(197, 45, 72, 0.1)",
                     interval25,
@@ -71,7 +71,7 @@ window.addEventListener("load", async () => {
                     'generateId': true
                 });
                 map.addLayer({
-                    'id': 'contry-fills',
+                    'id': 'contry',
                     'type': 'fill',
                     'source': 'contry',
                     'layout': {},
