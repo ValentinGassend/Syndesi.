@@ -61,7 +61,7 @@
         &-text{
             font-family: $ff_2;
             font-size: 2rem;
-            font-weight: 400;
+            font-weight: 300;
             line-height: 120%;
             &.bold {
                 font-weight: 700;
@@ -77,17 +77,29 @@
             line-height: 120%;
         }
         &-input {
-            padding: 2.4rem 17.2rem;
+            padding: 1.6rem;
             text-align: center;
             font-size: 3.2rem;
             font-weight: 700;
             line-height: 120%;
             background-color: transparent;
-            border: 0.4rem solid $color_white;
-            color: white;
+            border: 0.4rem solid $color_secondary;
+            color: $color_secondary;
 
             &::placeholder {
-                color: white;
+                color: $color_secondary;
+            }
+            &--valid {
+                margin-left: 4rem;
+                width: 9rem;
+                padding: 1.6rem;
+                text-align: center;
+                font-size: 3.2rem;
+                font-weight: 700;
+                line-height: 120%;
+                background-color: transparent;
+                border: 0.4rem solid $color_secondary;
+                color: $color_secondary;
             }
         }
 
@@ -123,26 +135,38 @@
             gap: 1.6rem;
         }
         &-text {
+            font-family: $ff_2;
             font-size: 2rem;
-            font-weight: 500;
+            font-weight: 300;
             line-height: 120%;
         }
         &-column {
             margin: auto;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            gap: 11.9rem;
+            gap: 2.4rem;
             &-illustration{
                 display: flex;
                 gap: 2.4rem;
+                img {
+                    height: 22.4rem;
+                    width: auto;
+                }
             }
             &-text {
-                font-size: 2rem;
-                font-weight: 500;
-                line-height: 120%;
+                &--hug {
+                    font-weight: 700;
+                    font-size: 4.8rem;
+                    line-height: 100%;
+                }
+                &--sub {
+                    font-weight: 600;
+                    font-size: 2.4rem;
+                    line-height: 120%;
+                }
             }
             &-illustration {
 

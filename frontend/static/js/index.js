@@ -2,6 +2,9 @@ import Content from "./views/Content.js";
 import Intro from "./views/Intro.js";
 import End from "./views/End.js";
 import Gallery from "./views/Gallery.js";
+import Legal from "./views/Legal.js";
+import Sources from "./views/Sources.js";
+import Affiche from "./views/Affiche.js";
 import {
     gsap,
     ScrollTrigger,
@@ -36,8 +39,11 @@ const navigateTo = url => {
 const router = async () => {
     const routes = [
         {path: "/intro", view: Intro},
+        {path: "/legal", view: Legal},
+        {path: "/sources", view: Sources},
         {path: "/end", view: End},
         {path: "/home", view: Gallery},
+        {path: "/ilovedata", view: Affiche},
         {path: "/content", view: Content}
     ];
 
@@ -81,6 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.name-input--valid')) {
+        document.querySelector('.name-input--valid').addEventListener('click', () => {
+            // Selecting the input element and get its value
+            let name = document.querySelector(".name-input").value;
+            // Displaying the value
+            console.log(name);
+            return name;
+        })
+    }
+
+
     let views = gsap.utils.toArray(".view"),
         scrollTween;
 
@@ -117,6 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         document.getElementById('map').addEventListener('mouseleave', () => {
             cursor.classList.remove('zoom');
+        });
+    }
+    if (document.querySelector('.end--illustration')) {
+        document.querySelector('.end--illustration').addEventListener('mouseover', () => {
+            cursor.classList.add('interogation');
+        });
+        document.querySelector('.end--illustration').addEventListener('mouseleave', () => {
+            cursor.classList.remove('interogation');
         });
     }
     if (document.getElementsByClassName('cursor_hover')[1]) {
@@ -409,14 +434,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function steak_explosion() {
-
-        document.querySelector(".scale-3--agriculture").classList.add('active');
-        document.querySelector(".scale-3--consommation").classList.add('active');
-        document.querySelector(".scale-3--embalage").classList.add('active');
-        document.querySelector(".scale-3--supermarche").classList.add('active');
-        document.querySelector(".scale-3--transformation").classList.add('active');
-        document.querySelector(".scale-3--transport").classList.add('active');
-        document.querySelector(".scale-3--outline").classList.add('active');
+        if (document.querySelector(".scale-3")) {
+            document.querySelector(".scale-3--agriculture").classList.add('active');
+            document.querySelector(".scale-3--consommation").classList.add('active');
+            document.querySelector(".scale-3--embalage").classList.add('active');
+            document.querySelector(".scale-3--supermarche").classList.add('active');
+            document.querySelector(".scale-3--transformation").classList.add('active');
+            document.querySelector(".scale-3--transport").classList.add('active');
+            document.querySelector(".scale-3--outline").classList.add('active');
+        }
     }
 
     tl.to('.scale-3--agricultureImage---path', {
@@ -437,8 +463,9 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     function scrolldown_scale4() {
-        document.querySelector('.scale-3--agricultureImage').classList.add('active');
-        // morphSVG: '.scale-3--agricultureImage---path',
+        if (document.querySelector('.scale-3--agricultureImage')) {
+            document.querySelector('.scale-3--agricultureImage').classList.add('active');
+        }
     };
 
 
@@ -455,8 +482,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scale3_fadeOut() {
-        document.querySelector('.scale-3--agricultureImage---path').classList.add('hide');
-        scale4_fadeIn();
+        if (document.querySelector('.scale-3--agricultureImage---path')) {
+
+            document.querySelector('.scale-3--agricultureImage---path').classList.add('hide');
+            scale4_fadeIn();
+        }
 
     }
 
@@ -473,11 +503,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scale4_fadeinText() {
-        document.querySelector(".scale-4--category---urbaine").classList.add('active');
-        document.querySelector(".scale-4--category---miniere").classList.add('active');
-        document.querySelector(".scale-4--category---infrastructure").classList.add('active');
-        document.querySelector(".scale-4--category---agriculture").classList.add('active');
+        if (document.querySelector('.scale-4--category')) {
 
+            document.querySelector(".scale-4--category---urbaine").classList.add('active');
+            document.querySelector(".scale-4--category---miniere").classList.add('active');
+            document.querySelector(".scale-4--category---infrastructure").classList.add('active');
+            document.querySelector(".scale-4--category---agriculture").classList.add('active');
+        }
         tl.to('.scale-4--description', {
                 onStart: () => scale4_fadeinNumber(),
                 opacity: 1,
@@ -663,20 +695,21 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     function scale4_fadeout() {
-        document.querySelector(".scale-4--category---urbaine").classList.remove('active');
-        document.querySelector(".scale-4--category---miniere").classList.remove('active');
-        document.querySelector(".scale-4--category---infrastructure").classList.remove('active');
-        document.querySelector(".scale-4--category---agriculture").classList.remove('active');
-        tl.to('.scale-4--description', {
-                onStart: () => scale4_fadeoutNumber(),
-                opacity: 0,
-                // delay:1.5,
+        if (document.querySelector(".scale-4")) {
+            document.querySelector(".scale-4--category---urbaine").classList.remove('active');
+            document.querySelector(".scale-4--category---miniere").classList.remove('active');
+            document.querySelector(".scale-4--category---infrastructure").classList.remove('active');
+            document.querySelector(".scale-4--category---agriculture").classList.remove('active');
+            tl.to('.scale-4--description', {
+                    onStart: () => scale4_fadeoutNumber(),
+                    opacity: 0,
+                    // delay:1.5,
 
-                duration: 0.5,
-            }
-        );
-        document.querySelector(".scale-4--container").classList.add('active');
-
+                    duration: 0.5,
+                }
+            );
+            document.querySelector(".scale-4--container").classList.add('active');
+        }
         // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
         // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
         // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
@@ -684,12 +717,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function smokeAppear() {
-        document.querySelector(".scale-4--bis---cloud").classList.remove('hidden');
-
+        if(document.querySelector(".scale-4--bis---cloud")) {
+            document.querySelector(".scale-4--bis---cloud").classList.remove('hidden');
+        }
     }
 
     function treeBackward() {
-        document.querySelector(".scale-4--ter---left").classList.add('backward');
+        if (document.querySelector(".scale-4--ter")){
+            document.querySelector(".scale-4--ter---left").classList.add('backward');
         document.querySelector(".scale-4--ter---right").classList.add('backward');
         document.querySelector(".scale-4--bis").classList.add('hide');
         document.querySelector(".scale-4").classList.add('hide');
@@ -698,7 +733,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".scale-4--ter---left").classList.add('remove');
             document.querySelector(".scale-4--ter---right").classList.add('remove');
         }, 5000);
-
+    }
 
     }
 
@@ -740,8 +775,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function mapfadeout() {
-        document.querySelector(".scale-4--ter---MapContainer").classList.add('hide');
-
+        if (document.querySelector(".scale-4--ter---MapContainer")) {
+            document.querySelector(".scale-4--ter---MapContainer").classList.add('hide');
+        }
     }
 
     tl.from(".dezoom-quinquies--illustration---brain", {
@@ -913,6 +949,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.intro')) {
         document.querySelector('.overlay').style.display = "none";
     }
+    if (document.querySelector('.legal')) {
+        document.querySelector('.overlay').style.display = "none";
+    }
+    if (document.querySelector('.victory')) {
+        document.querySelector('.overlay').style.display = "none";
+    }
+    if (document.querySelector('.sources')) {
+        document.querySelector('.overlay').style.display = "none";
+    }
     if (document.querySelector('.endFrame')) {
         document.querySelector('.overlay').style.display = "none";
     }
@@ -930,86 +975,103 @@ document.addEventListener('DOMContentLoaded', () => {
 
             switch (views) {
                 case 1 :
-                    timeL.to(".info-name", {duration: 1.5, text: "Quotidien de iel"});
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    timeL.to(".info-name", {duration: 1.5, text: "comprendre l’impact"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "de la consommation de viande"});
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 2 :
-                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone steak"});
+                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "d’un steak de 100g"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 3 :
-                    timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+                    timeL.to(".info-name", {duration: 1.5, text: "MISE EN comparaison"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "des impacts carbones"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 4 :
                     timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "des impacts carbones"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 5:
                     timeL.to(".info-name", {duration: 1.5, text: "équivalence impact carbone steak"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "des impacts carbones"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 6 :
-                    timeL.to(".info-name", {duration: 1.5, text: "causes impact carbone steak"});
+                    timeL.to(".info-name", {duration: 1.5, text: "causes responsables"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "des impacts carbones"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 7 :
-                    timeL.to(".info-name", {duration: 1.5, text: "causes déforestation"});
+                    timeL.to(".info-name", {duration: 1.5, text: "causes responsables"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "de la déforestation"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 8 :
-                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone déforestation"});
+                    timeL.to(".info-name", {duration: 1.5, text: "impact carbone"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "de la déforestation"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 9 :
-                    timeL.to(".info-name", {duration: 1.5, text: "carte interactive"});
+                    timeL.to(".info-name", {duration: 1.5, text: "carte présentant"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "les émissions de C02"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 10 :
-                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre DE LA hauteur"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "sur son engagement"});
 
-                    // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
+                    // document.getElementsByClassName('info-localisation')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 11 :
-                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre DE LA hauteur"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "sur son engagement"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 12 :
-                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre DE LA hauteur"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "sur son engagement"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 13 :
-                    timeL.to(".info-name", {duration: 1.5, text: "prendre hauteur"});
+                    timeL.to(".info-name", {duration: 1.5, text: "prendre DE LA hauteur"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "sur son engagement"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 14 :
-                    timeL.to(".info-name", {duration: 1.5, text: "subconscient iel"});
+                    timeL.to(".info-name", {duration: 1.5, text: "ADAPTER SON QUOTIDIEN"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "grâce à Syndesi"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 15 :
-                    timeL.to(".info-name", {duration: 1.5, text: "solution 01."});
+                    timeL.to(".info-name", {duration: 1.5, text: "DATAGIR, LA SOLUTION"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "pour réduire ton impact"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 16 :
-                    timeL.to(".info-name", {duration: 1.5, text: "solution 02."});
+                    timeL.to(".info-name", {duration: 1.5, text: "Ecosia, la solution"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "pour contrer la déforestation"});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break
                 case 17 :
-                    timeL.to(".info-name", {duration: 1.5, text: "“THE END”"});
+                    timeL.to(".info-name", {duration: 1.5, text: "le mot de la fin"});
+                    timeL.to(".info-name--sub", {duration: 1.5, text: "ou pas..."});
 
                     // document.getElementsByClassName('info-name')[0].innerHTML = 'Quotidien de iel';
                     break

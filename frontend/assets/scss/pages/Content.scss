@@ -1071,6 +1071,9 @@
         &--illustration {
             position: absolute;
             bottom: 0;
+            :hover {
+                background-image: red;
+            }
         }
     }
 
