@@ -4,7 +4,6 @@ import End from "./views/End.js";
 import Gallery from "./views/Gallery.js";
 import {
     gsap,
-    toArray,
     ScrollTrigger,
     ScrollToPlugin,
     MorphSVGPlugin,
