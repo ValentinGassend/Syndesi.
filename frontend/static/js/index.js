@@ -755,9 +755,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     tl.to(".scale-4--ter---MapContainer", {
-        y: "+=90vh",
-        x: "-=10vw",
-        scale: 0.5,
+        // y: "+=90vh",
+        // x: "-=10vw",
+        // scale: 0.5,
         // opacity: 0,
         onStart: () => mapfadeout(),
         scrub: true,
