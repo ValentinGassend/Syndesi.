@@ -10,12 +10,6 @@
     {
       "src": "(.*)",
       "dest": "prod.js"
-    },{
-      "src": "/intro",
-      "dest": "frontend/static/js/index.js"
-    },{
-      "src": "/end",
-      "dest": "frontend/static/js/index.js"
     }
   ]
 }

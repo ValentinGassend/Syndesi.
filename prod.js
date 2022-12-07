@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+app.use("/", "frontend/static/js/index.js");
 app.use("/static", express.static(path.resolve(__dirname, "frontend", "static")));
 app.use("/static/image", express.static(path.resolve(__dirname, "frontend", "static/image")));
 app.use('/scss', express.static(path.join(__dirname, '../static/css')))
