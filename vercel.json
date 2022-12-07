@@ -11,10 +11,10 @@
       "dest": "prod.js"
     },{
       "src": "/intro",
-      "dest": "prod.js"
+      "dest": "frontend/static/js/index.js"
     },{
       "src": "/end",
-      "dest": "prod.js"
+      "dest": "frontend/static/js/index.js"
     }
   ]
 }
