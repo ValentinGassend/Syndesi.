@@ -4,8 +4,8 @@ window.addEventListener("load", async () => {
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/melllll/claqmemhc001h15rqv05npyi9',
-            center: [4.5, 45.5],
-            zoom: 1,
+            center: [-60, -20],
+            zoom: 2.25,
             // projection: 'equalEarth',
             renderWorldCopies: false,
         });
@@ -18,26 +18,30 @@ window.addEventListener("load", async () => {
 
 
         function filterBy(year, intervalStart, interval25, interval50, interval75, intervalEnd) {
-            console.log(year);
-            map.setPaintProperty(
-                'contry',
-                'fill-color',
-                [
-                    "interpolate",
-                    ["linear"],
-                    ["get", year],
-                    intervalStart,
-                    "rgba(197, 45, 72, 0.1)",
-                    interval25,
-                    "rgba(197, 45, 72, 0.25)",
-                    interval50,
-                    "rgba(197, 45, 72, 0.5)",
-                    interval75,
-                    "rgba(197, 45, 72, 0.75)",
-                    intervalEnd,
-                    "#C52d48"
-                ]
-            );
+            let mapLayer = map.getLayer('Country');
+
+            if (typeof mapLayer !== 'undefined') {
+                // Remove map layer & source.
+                map.setPaintProperty(
+                    'Country',
+                    'fill-color',
+                    [
+                        "interpolate",
+                        ["linear"],
+                        ["get", year],
+                        intervalStart,
+                        "rgba(197, 45, 72, 0.1)",
+                        interval25,
+                        "rgba(197, 45, 72, 0.25)",
+                        interval50,
+                        "rgba(197, 45, 72, 0.5)",
+                        interval75,
+                        "rgba(197, 45, 72, 0.75)",
+                        intervalEnd,
+                        "#C52d48"
+                    ]
+                );
+            }
         }
 
         map.on('load', async () => {
@@ -47,7 +51,6 @@ window.addEventListener("load", async () => {
 
             const year = "GE_" + document.getElementsByClassName('toggle_item')[0].value;
 
-            //// console.log(filters);
             const csvData = await fetch('./static/data/air_data_aurat_2016_2018.csv').then((response) => response.text());
             let pollutionByDept = {}, lineFields, csvLines = csvData.split("\n").slice(1);
             for (const line of csvLines) {
@@ -63,17 +66,16 @@ window.addEventListener("load", async () => {
                     //   return d;
                     // });
                     f.properties.COUNTRYAFF = pollutionByDept[f.properties.COUNTRYAFF];
-                    //// console.log(f.properties);
                 }
-                map.addSource('contry', {
+                map.addSource('Country', {
                     'type': 'geojson',
                     'data': geojsonData,
                     'generateId': true
                 });
                 map.addLayer({
-                    'id': 'contry',
+                    'id': 'Country',
                     'type': 'fill',
-                    'source': 'contry',
+                    'source': 'Country',
                     'layout': {},
                     'paint': {
                         'fill-color':
@@ -98,11 +100,12 @@ window.addEventListener("load", async () => {
             })
 
         });
-        window.setInterval(function () {
+        document.getElementsByClassName('toggle_item')[0].addEventListener("change", function () {
             let currentYear = document.getElementsByClassName('toggle_item')[0].value;
-            if (currentYear < 2015) {
-                currentYear++;
-            } else {
+            if (currentYear > 2015) {
+                currentYear = 2015;
+            }
+            if (currentYear < 2001) {
                 currentYear = 2001;
             }
             document.getElementsByClassName('toggle_item')[0].value = currentYear;
@@ -133,17 +136,56 @@ window.addEventListener("load", async () => {
                 document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Five')[0].innerHTML = intervalStart;
                 filterBy("TLC_" + currentYear, intervalStart, interval25, interval50, interval75, intervalEnd);
             }
-            // if (document.getElementsByClassName('scale-4--ter---legendCategory----item-----Third')[0].classList.contains('active')) {
-            //     let intervalStart = 0;
-            //     let intervalEnd = 1820993242;
-            //     document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Start')[0].innerHTML = intervalStart;
-            //     document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-End')[0].innerHTML = intervalEnd;
-            //
-            //     filterBy("y" + currentYear, intervalStart, intervalEnd);
-            // }
 
 
-        }, 500);
+        });
+
+        document.getElementsByClassName('scale-4--ter---legendCategory----item-----Second')[0].addEventListener("click", function () {
+            let currentYear = document.getElementsByClassName('toggle_item')[0].value;
+            if (currentYear > 2015) {
+                currentYear = 2015;
+            }
+            if (currentYear < 2001) {
+                currentYear = 2001;
+            }
+            document.getElementsByClassName('toggle_item')[0].value = currentYear;
+            let intervalStart = 0;
+            let interval25 = 25.5;
+            let interval50 = 1140;
+            let interval75 = 13400;
+            let intervalEnd = 2830000;
+
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-First')[0].innerHTML = intervalEnd;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Second')[0].innerHTML = interval75;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Third')[0].innerHTML = interval50;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Four')[0].innerHTML = interval25;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Five')[0].innerHTML = intervalStart;
+            filterBy("TLC_" + currentYear, intervalStart, interval25, interval50, interval75, intervalEnd);
+
+
+        });
+        document.getElementsByClassName('scale-4--ter---legendCategory----item-----First')[0].addEventListener("click", function () {
+            let currentYear = document.getElementsByClassName('toggle_item')[0].value;
+            if (currentYear > 2015) {
+                currentYear = 2015;
+            }
+            if (currentYear < 2001) {
+                currentYear = 2001;
+            }
+            document.getElementsByClassName('toggle_item')[0].value = currentYear;
+            let intervalStart = 0;
+            let interval25 = 13100;
+            let interval50 = 630000;
+            let interval75 = 7630000;
+            let intervalEnd = 1820000000;
+
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-First')[0].innerHTML = intervalEnd;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Second')[0].innerHTML = interval75;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Third')[0].innerHTML = interval50;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Four')[0].innerHTML = interval25;
+            document.getElementsByClassName('scale-4--ter---legendScale----gradiantData-----item-Five')[0].innerHTML = intervalStart;
+            filterBy("GE_" + currentYear, intervalStart, interval25, interval50, interval75, intervalEnd);
+        });
         map.on('mouseenter', 'contry', (e) => {
             // Change the cursor style as a UI indicator.
             map.getCanvas().style.cursor = 'pointer';
