@@ -239,6 +239,7 @@ input {
   font-weight: 600;
   line-height: 120%;
   color: #C52D48;
+  cursor: none !important;
 }
 .cursor-scroll, .cursor-zoom, .cursor-affiche {
   position: absolute;
@@ -252,12 +253,15 @@ input {
   color: #ffffff;
 }
 .cursor.zoom .cursor-zoom {
+  cursor: none !important;
   opacity: 1;
 }
 .cursor.scroll .cursor-scroll {
+  cursor: none !important;
   opacity: 1;
 }
 .cursor.interogation .cursor-affiche {
+  cursor: none !important;
   color: #ffffff;
   font-size: 5rem;
   opacity: 1;
@@ -407,6 +411,16 @@ body {
   bottom: 3.2rem;
 }
 
+input[type=range i] {
+  cursor: none;
+}
+
+input {
+  cursor: none;
+  writing-mode: unset;
+  outline: none;
+}
+
 /* Pages */
 .content .hero {
   margin: auto 0;
@@ -496,7 +510,6 @@ body {
   width: auto;
   height: auto;
   z-index: -1;
-  transition: 1.5s opacity linear;
 }
 .content .scale-2--data---left, .content .scale-2--bis---data---left, .content .scale-2--ter---data---left {
   opacity: 0;
@@ -879,7 +892,7 @@ body {
 }
 .content .scale-4--ter---MapContainer {
   justify-content: space-around;
-  transition: opacity 1s linear;
+  transition: all 1s linear;
   opacity: 1;
   height: 50vh;
   width: 60vw;
@@ -1098,6 +1111,7 @@ body {
   line-height: 120%;
 }
 .content .dezoom-lottie {
+  pointer-events: none;
   transition: 1.5s opacity linear;
   scale: 1.4 1.55;
   transform: translate(-68px, -10px);
@@ -1377,7 +1391,6 @@ body {
   background-image: url("../image/dot.svg");
   background-repeat: no-repeat;
   background-position: center;
-  cursor: pointer;
 }
 .gallery .steak-text:hover {
   font-size: 4.8rem;
@@ -1746,6 +1759,9 @@ body {
 .intro .name-input.validated {
   border-color: #ffffff;
   color: #ffffff;
+}
+.intro .name-input:focus-visible {
+  outline: none;
 }
 .intro .name-input::placeholder {
   color: #C52D48;
