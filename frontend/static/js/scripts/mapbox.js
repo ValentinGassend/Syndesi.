@@ -188,7 +188,7 @@ window.addEventListener("load", async () => {
         });
         map.on('mouseenter', 'contry', (e) => {
             // Change the cursor style as a UI indicator.
-            map.getCanvas().style.cursor = 'pointer';
+            map.getCanvas().style.cursor = 'none';
 
             // Copy coordinates array.
             const data = e.features[0].properties.contry - fills;
