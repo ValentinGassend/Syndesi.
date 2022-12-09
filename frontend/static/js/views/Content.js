@@ -333,8 +333,6 @@ export default class extends AbstractView {
     </section>
 
 </div>
-<script src="/static/js/scripts/mapbox.js" type="module"></script>
-
           `;
     }
 }

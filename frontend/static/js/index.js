@@ -316,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // duration: time_duration,
             // scrub: true,
             overwrite: true,
-            markers:true,
             // id: `scale-${i}`
             // delay: 5,
             // lazy: false,
