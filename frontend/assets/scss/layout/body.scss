@@ -19,8 +19,6 @@
   font-weight: 600;
   line-height: 120%;
   color: $color_secondary;
-    cursor: none !important;
-
   &-scroll,&-zoom,&-affiche {
     position: absolute;
     left: 50%;
@@ -33,23 +31,17 @@
   &.zoom {
     color: $color_white;
     .cursor-zoom {
-        cursor: none !important;
-
       opacity: 1;
     }
   }
   &.scroll {
     .cursor-scroll {
-        cursor: none !important;
-
       opacity: 1;
     }
 
   }
   &.interogation {
     .cursor-affiche {
-        cursor: none !important;
-
       color: $color_white;
       font-size: 5rem;
       opacity: 1;
@@ -221,12 +213,4 @@ position: fixed;
     left: 4rem;
     bottom: 3.2rem;
   }
-}
-input[type="range" i] {
-  cursor: none;
-}
-input {
-  cursor: none;
-  writing-mode: unset;
-  outline: none;
 }

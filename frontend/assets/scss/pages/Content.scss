@@ -104,6 +104,7 @@
                 width: auto;
                 height: auto;
                 z-index: -1;
+                transition: 1.5s opacity linear;
 
             }
 
@@ -557,7 +558,7 @@
                     }
 
                     justify-content: space-around;
-                    transition: all 1s linear;
+                    transition: opacity 1s linear;
                     opacity: 1;
                     height: 50vh;
                     //background-color: red;
@@ -852,7 +853,6 @@
 
     .dezoom {
         &-lottie {
-            pointer-events: none;
             transition: 1.5s opacity linear;
             scale: 1.4 1.55;
             transform: translate(-68px, -10px);

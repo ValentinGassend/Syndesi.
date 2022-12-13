@@ -130,9 +130,6 @@
                 border-color: $color_white;
                 color: $color_white;
             }
-            &:focus-visible {
-                outline: none;
-            }
             &::placeholder {
                 color: $color_secondary;
             }

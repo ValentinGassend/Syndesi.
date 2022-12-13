@@ -6,7 +6,12 @@ import Legal from "./views/Legal.js";
 import Sources from "./views/Sources.js";
 import Affiche from "./views/Affiche.js";
 import {
-    gsap, ScrollTrigger, ScrollToPlugin, MorphSVGPlugin, Power1, TextPlugin
+    gsap,
+    ScrollTrigger,
+    ScrollToPlugin,
+    MorphSVGPlugin,
+    Power1,
+    TextPlugin
 } from "./libs/gsap-public/esm/all.js";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, MorphSVGPlugin, Power1, TextPlugin);
@@ -32,18 +37,21 @@ const navigateTo = url => {
 };
 
 const router = async () => {
-    const routes = [{path: "/intro", view: Intro}, {path: "/legal", view: Legal}, {
-        path: "/sources",
-        view: Sources
-    }, {path: "/end", view: End}, {path: "/home", view: Gallery}, {
-        path: "/ilovedata",
-        view: Affiche
-    }, {path: "/content", view: Content}];
+    const routes = [
+        {path: "/intro", view: Intro},
+        {path: "/legal", view: Legal},
+        {path: "/sources", view: Sources},
+        {path: "/end", view: End},
+        {path: "/home", view: Gallery},
+        {path: "/ilovedata", view: Affiche},
+        {path: "/content", view: Content}
+    ];
 
     // Test each route for potential match
     const potentialMatches = routes.map(route => {
         return {
-            route: route, result: location.pathname.match(pathToRegex(route.path))
+            route: route,
+            result: location.pathname.match(pathToRegex(route.path))
         };
     });
 
@@ -51,7 +59,8 @@ const router = async () => {
 
     if (!match) {
         match = {
-            route: routes[0], result: [location.pathname]
+            route: routes[0],
+            result: [location.pathname]
         };
     }
 
@@ -88,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    let views = gsap.utils.toArray(".view"), scrollTween;
+    let views = gsap.utils.toArray(".view"),
+        scrollTween;
 
     //SCROLL scale
 
@@ -178,40 +188,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     gsap.from(items, {
-        textContent: 0.00, duration: 4, ease: Power1.easeOut, snap: {textContent: 0.01}, stagger: 1, scrollTrigger: {
+        textContent: 0.00,
+        duration: 4,
+        ease: Power1.easeOut,
+        snap: {textContent: 0.01},
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-1", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-1",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
-    if (document.querySelector('.intro')) {
+    if (document.querySelector('.intro')){
         tl.from('.hero-svg--path', {
-            morphSVG: '.before-svg--path', strokeWidth: "1.7", delay: 2, duration: 1, onStart: () => {
-                document.querySelector('.hero-subtitle').classList.remove('hide');
-                document.querySelector('.hero-scroll').classList.remove('hide');
-                document.querySelector('.hero-illustration').classList.remove('hide');
-                document.querySelector('.hero-svg--path').classList.toggle('before_syndesi');
-                document.querySelector('.hero-svg--path').classList.toggle('after_syndesi');
-            }, onEnd: () => {
-                document.querySelector('.hero-svg--path').classList.toggle('before_syndesi');
-                document.querySelector('.hero-svg--path').classList.toggle('after_syndesi');
+                morphSVG: '.before-svg--path',
+            strokeWidth:"1.7",
+            delay: 2,
+            duration: 1,
+            onStart:() => {
+                    document.querySelector('.hero-subtitle').classList.remove('hide');
+                    document.querySelector('.hero-scroll').classList.remove('hide');
+                    document.querySelector('.hero-illustration').classList.remove('hide');
+                    document.querySelector('.hero-svg--path').classList.toggle('before_syndesi');
+                    document.querySelector('.hero-svg--path').classList.toggle('after_syndesi');
+            },
+            onEnd:() => {
+                    document.querySelector('.hero-svg--path').classList.toggle('before_syndesi');
+                    document.querySelector('.hero-svg--path').classList.toggle('after_syndesi');
 
-            }, // scrollTrigger: {
-            //     start: "center center",
-            //     end: "bottom top",
-            //     trigger: ".before",
-            //     scrub: true,
-            //     overwrite: true,
-            //     delay: 0,
-            // }
-        });
+            },
+                // scrollTrigger: {
+                //     start: "center center",
+                //     end: "bottom top",
+                //     trigger: ".before",
+                //     scrub: true,
+                //     overwrite: true,
+                //     delay: 0,
+                // }
+            }
+        );
     }
     tl.to(".scale-1--steak", {
-        y: "+=100vh", x: "-20.7vw", scale: 1.1, // scrub: true,
+        y: "+=100vh",
+        x: "-20.7vw",
+        scale: 1.1,
+        // scrub: true,
         // overwrite: true,
 
         // immediateRender: true,
@@ -220,10 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // transformOrigin: "50% 50%",
         scrollTrigger: {
             // immediateRender: true,
-            start: "center center", end: "bottom top", trigger: ".scale-1", // pin: true,
+            start: "center center",
+            end: "bottom top",
+            trigger: ".scale-1",
+            // pin: true,
             // duration: time_duration,
-            scrub: true, overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            scrub: true,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
@@ -234,44 +270,58 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
     tl.to(".scale-2--lottie", {
-        opacity: 1, inertia: false, overwrite: true, immediateRender: true, ease: animation_duration, // delay:0.5,
+        opacity: 1,
+        inertia: false,
+        overwrite: true,
+        immediateRender: true,
+        ease: animation_duration,
+        // delay:0.5,
         duration: time_duration,
 
         scrollTrigger: {
             // immediateRender: true,
 
-            start: "top 1", end: "center top", trigger: ".scale-2", // pin: true,
+            start: "top 1",
+            end: "center top",
+            trigger: ".scale-2",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
+            overwrite: true,
+            // id: `scale-${i}`
             // delay: 5,
-            onEnter: () => scale1_fadeout(tl, animation_duration, time_duration), // lazy: false,
+            onEnter: () => scale1_fadeout(tl, animation_duration, time_duration),
+            // lazy: false,
             // onLeave: () => scale1_fadeout(tl, animation_duration, time_duration),
         }
     });
     tl.to(".dezoom-lottie", {
-        opacity: 1, inertia: false, overwrite: true, immediateRender: true, ease: animation_duration, // delay:0.5,
-        duration: time_duration, onComplete: () => LottieBrain(), onStart: () => {
-            if (document.querySelector(".scale-4--ter---MapContainer")) {
-                document.querySelector('.scale-4--ter---MapContainer').style.scale = 0;
-                document.querySelector('.scale-4--ter---MapContainer').style.transform = "translate(-50%,-50vh)";
-            }
-        },
+        opacity: 1,
+        inertia: false,
+        overwrite: true,
+        immediateRender: true,
+        ease: animation_duration,
+        // delay:0.5,
+        duration: time_duration,
+        onComplete: () => LottieBrain(),
 
 
         scrollTrigger: {
             // immediateRender: true,
 
-            start: "top bottom", end: "center center", trigger: ".dezoom", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".dezoom",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true,// id: `scale-${i}`
+            overwrite: true,
+            // id: `scale-${i}`
             // delay: 5,
             // lazy: false,
             // onLeave: () => scale1_fadeout(tl, animation_duration, time_duration),
         }
     });
-
     function scale1_fadeout(tl, animation_duration, time_duration) {
         tl.to(".scale-1--steak", {
             // onStart: () => scale2_fadein(tl, animation_duration, time_duration),
@@ -291,178 +341,278 @@ document.addEventListener('DOMContentLoaded', () => {
             lottie.play();
             lottie.addEventListener("frame", (evt) => {
 
-                if (evt.detail.frame > 190) {
-                    if (evt.detail.frame < 195) {
-                        lottie.pause();
+                    if (evt.detail.frame > 190) {
+                        if (evt.detail.frame < 195) {
+                            lottie.pause();
+                        }
                     }
+
                 }
-
-            });
+            );
         }
-    }
-
-    function LottieBrain() {
+    }function LottieBrain() {
         if (document.querySelector(".dezoom-lottie")) {
             let LottieBrain = document.querySelector(".dezoom-lottie");
             LottieBrain.play();
             console.log("played");
             LottieBrain.addEventListener("frame", (evt) => {
                 console.log(evt);
-                if (evt.detail.frame >= 100) {
-                    console.log("paused");
-                    document.querySelector('.dezoom-quinquies--illustration---brain').style.opacity = 1;
-                    document.querySelector('.dezoom-lottie').style.opacity = 0;
+                    if (evt.detail.frame >= 100) {
+                        console.log("paused");
+                        document.querySelector('.dezoom-quinquies--illustration---brain').style.opacity = 1;
+                        document.querySelector('.dezoom-lottie').style.opacity = 0;
 
+
+                    }
 
                 }
-
-            });
+            );
             console.log(LottieBrain);
         }
     }
 
     tl.to(".scale-2--lottie", {
         y: "+=100vh",
-        scrub: true, // overwrite: true,
+        scrub: true,
+        // overwrite: true,
 
         // immediateRender: true,
         ease: animation_duration,
         onUpdate: () => LottiePlay_phase2(),
-        onComplete: () => LottieGsap_phase3(), // transformOrigin: "50% 50%",
+        onComplete: () => LottieGsap_phase3(),
+        // transformOrigin: "50% 50%",
         scrollTrigger: {
             // immediateRender: true,
-            start: "center center", end: "bottom top", trigger: ".scale-2", // pin: true,
+            start: "center center",
+            end: "bottom top",
+            trigger: ".scale-2",
+            // pin: true,
             // duration: time_duration,
-            scrub: true, overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            scrub: true,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--data---left", {
-        opacity: 1, duration: 2, delay: 1, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        duration: 2,
+        delay:1,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
 
     gsap.to(".scale-2--data---left", {
-        opacity: 0, duration: 2, delay: 0,
+        opacity: 0,
+        duration: 2,
+        delay:0,
 
         ease: Power1.linear,
 
-        stagger: 1, scrollTrigger: {
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--bis", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--bis",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--data---right", {
-        opacity: 1, delay: 1, duration: 2, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        delay:1,
+        duration: 2,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--data---right", {
-        opacity: 0, duration: 2, delay: 0,
+        opacity: 0,
+        duration: 2,
+        delay:0,
 
         ease: Power1.linear,
 
-        stagger: 1, scrollTrigger: {
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--bis", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--bis",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--bis---data---left", {
-        opacity: 1, duration: 2, delay: 1, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        duration: 2,
+        delay:1,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--bis", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--bis",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--bis---data---left", {
-        opacity: 0, duration: 2, delay: 0,
+        opacity: 0,
+        duration: 2,
+        delay:0,
 
         ease: Power1.linear,
 
-        stagger: 1, scrollTrigger: {
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--ter", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--ter",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--bis---data---right", {
-        opacity: 1, delay: 1, duration: 2, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        delay:1,
+        duration: 2,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--bis", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--bis",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--bis---data---right", {
-        opacity: 0, duration: 2, delay: 0,
+        opacity: 0,
+        duration: 2,
+        delay:0,
 
         ease: Power1.linear,
 
-        stagger: 1, scrollTrigger: {
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--ter", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--ter",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
 
     gsap.to(".scale-2--ter---data---left", {
-        opacity: 1, duration: 2, delay: 1, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        duration: 2,
+        delay:1,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--ter", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--ter",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
     gsap.to(".scale-2--ter---data---right", {
-        opacity: 1, delay: 1, duration: 2, ease: Power1.linear, stagger: 1, scrollTrigger: {
+        opacity: 1,
+        delay:1,
+        duration: 2,
+        ease: Power1.linear,
+        stagger: 1,
+        scrollTrigger: {
             // immediateRender: true,
-            start: "top bottom", end: "center center", trigger: ".scale-2--ter", // pin: true,
+            start: "top bottom",
+            end: "center center",
+            trigger: ".scale-2--ter",
+            // pin: true,
             // duration: time_duration,
             // scrub: true,
-            overwrite: true, // id: `scale-${i}`
-            delay: 0, // lazy: false,
+            overwrite: true,
+            // id: `scale-${i}`
+            delay: 0,
+            // lazy: false,
 
         }
     });
@@ -499,21 +649,28 @@ document.addEventListener('DOMContentLoaded', () => {
             lottie.play();
             lottie.addEventListener("frame", (evt) => {
 
-                if (evt.detail.frame > 340) {
-                    if (evt.detail.frame < 345) {
-                        lottie.pause();
+                    if (evt.detail.frame > 340) {
+                        if (evt.detail.frame < 345) {
+                            lottie.pause();
+                        }
                     }
-                }
 
-            });
+                }
+            );
         }
     }
 
     function LottieGsap_phase3() {
         tl.fromTo(".scale-2--lottie", {
-            y: "100vh", scrub: true, ease: animation_duration,
+            y: "100vh",
+            scrub: true,
+            ease: animation_duration,
         }, {
-            y: "+=100vh", scrub: true, ease: animation_duration, onUpdate: () => LottiePlay_phase3(), scrollTrigger: {
+            y: "+=100vh",
+            scrub: true,
+            ease: animation_duration,
+            onUpdate: () => LottiePlay_phase3(),
+            scrollTrigger: {
                 start: "center center",
                 end: "bottom top",
                 trigger: ".scale-2--bis",
@@ -530,19 +687,29 @@ document.addEventListener('DOMContentLoaded', () => {
             let lottie = document.querySelector(".scale-2--lottie");
             lottie.play();
             lottie.addEventListener("frame", (evt) => {
-                if (evt.detail.frame > 598) {
-                    lottie.pause();
-                    if (lottie.getLottie().isPaused == true) {
-                        scale3_fadeIn();
+                    if (evt.detail.frame > 598) {
+                        lottie.pause();
+                        if (lottie.getLottie().isPaused == true) {
+                            scale3_fadeIn();
+                        }
                     }
                 }
-            });
+            );
         }
     }
 
     tl.to(".scale-2--lottie", {
-        opacity: 0, inertia: false, duration: time_duration, ease: animation_duration, scrollTrigger: {
-            start: "top bottom", end: "center center", trigger: ".dezoom", scrub: true, overwrite: true, delay: 0,
+        opacity: 0,
+        inertia: false,
+        duration: time_duration,
+        ease: animation_duration,
+        scrollTrigger: {
+            start: "top bottom",
+            end: "center center",
+            trigger: ".dezoom",
+            scrub: true,
+            overwrite: true,
+            delay: 0,
         },
     });
 
@@ -575,7 +742,12 @@ document.addEventListener('DOMContentLoaded', () => {
             onComplete: () => steak_explosion(),
 
             scrollTrigger: {
-                start: "top bottom", end: "center center", trigger: ".scale-3", scrub: true, overwrite: true, delay: 0,
+                start: "top bottom",
+                end: "center center",
+                trigger: ".scale-3",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
             }
         });
     }
@@ -593,17 +765,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     tl.to('.scale-3--agricultureImage---path', {
-        morphSVG: '.scale-4--illustration---path', // y: '-=100vh',
-        onStart: () => scrolldown_scale4(), onComplete: () => scale3_fadeOut(), scrollTrigger: {
-            start: "center center",
-            end: "bottom top",
-            trigger: ".scale-3",
-            pin: ".scale-3--agricultureImage---svg",
-            scrub: true,
-            overwrite: true,
-            delay: 0,
+            morphSVG: '.scale-4--illustration---path',
+            // y: '-=100vh',
+            onStart: () => scrolldown_scale4(),
+            onComplete: () => scale3_fadeOut(),
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-3",
+                pin: ".scale-3--agricultureImage---svg",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
 
     function scrolldown_scale4() {
         if (document.querySelector('.scale-3--agricultureImage')) {
@@ -614,9 +790,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function scale4_fadeIn() {
         tl.to('.scale-4--category---agriculture', {
-            opacity: 1, delay: 0, duration: 1, onStart: () => scale4_fadeinIllustration(),
+                opacity: 1,
+                delay: 0,
+                duration: 1,
+                onStart: () => scale4_fadeinIllustration(),
 
-        });
+            }
+        );
 
     }
 
@@ -631,10 +811,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function scale4_fadeinIllustration() {
         tl.to('.scale-4--illustration', {
-            opacity: 1, delay: 0,
+                opacity: 1,
+                delay: 0,
 
-            duration: 0.5, onStart: () => scale4_fadeinText(),
-        });
+                duration: 0.5,
+                onStart: () => scale4_fadeinText(),
+            }
+        );
     }
 
     function scale4_fadeinText() {
@@ -646,100 +829,187 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".scale-4--category---agriculture").classList.add('active');
         }
         tl.to('.scale-4--description', {
-            onStart: () => scale4_fadeinNumber(), opacity: 1, delay: 1.5, duration: 0.5,
-        });
+                onStart: () => scale4_fadeinNumber(),
+                opacity: 1,
+                delay: 1.5,
+                duration: 0.5,
+            }
+        );
     }
 
     function scale4_fadeinNumber() {
         tl.to('.scale-4--Number', {
-            opacity: 1, // delay:1.5,
-            duration: 0.5,
-        });
+                opacity: 1,
+                // delay:1.5,
+                duration: 0.5,
+            }
+        );
     }
 
     function scale4_fadeoutNumber() {
         tl.to('.scale-4--Number', {
-            opacity: 0, // delay:1.5,
-            duration: 0.5,
-        });
+                opacity: 0,
+                // delay:1.5,
+                duration: 0.5,
+            }
+        );
     }
 
     tl.to('.scale-4--container', {
 
-        y: '+=200vh', scale: 0.5,
+            y: '+=200vh',
+            scale: 0.5,
 
-        ease: animation_duration, onStart: () => scale4_fadeout(),
+            ease: animation_duration,
+            onStart: () => scale4_fadeout(),
 
-        scrollTrigger: {
-            start: "center center",
+            scrollTrigger: {
+                start: "center center",
 
-            trigger: ".scale-4", endTrigger: ".scale-4--bis", end: "bottom top", scrub: true, overwrite: true, delay: 0,
+                trigger: ".scale-4",
+                endTrigger: ".scale-4--bis",
+                end: "bottom top",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
     tl.fromTo('.scale-4--bis---left', {
 
-        x: '-=10vw', ease: animation_duration,
+            x: '-=10vw',
+            ease: animation_duration,
 
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4", scrub: true, overwrite: true, delay: 0,
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '+=15vw',
+            scale: 1.5,
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    }, {
-
-        x: '+=15vw', scale: 1.5, ease: animation_duration,
-
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4", scrub: true, overwrite: true, delay: 0,
-        }
-    });
+    );
     tl.fromTo('.scale-4--bis---right', {
 
-        x: '+=100vw', ease: animation_duration,
+            x: '+=100vw',
+            ease: animation_duration,
 
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4", scrub: true, overwrite: true, delay: 0,
-        }
-    }, {
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
 
-        x: '-=60vw', scale: 1.5, ease: animation_duration, onComplete: () => smokeAppear(), scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4", scrub: true, overwrite: true, delay: 0,
+            x: '-=60vw',
+            scale: 1.5,
+            ease: animation_duration,
+            onComplete: () => smokeAppear(),
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
     tl.to('.scale-4--bis', {
 
-        y: '+=100vh', scale: 0.75, ease: animation_duration, scrollTrigger: {
-            start: "center center", trigger: ".scale-4--bis", end: "bottom top", scrub: true, overwrite: true, delay: 0,
+            y: '+=100vh',
+            scale: 0.75,
+            ease: animation_duration,
+            scrollTrigger: {
+                start: "center center",
+                trigger: ".scale-4--bis",
+                end: "bottom top",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
 
 
     tl.fromTo('.scale-4--ter---left', {
 
-        x: '-=100vw', ease: animation_duration,
+            x: '-=100vw',
+            ease: animation_duration,
 
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4--bis", scrub: true, overwrite: true, delay: 0,
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
+
+            x: '+=100vw',
+            ease: animation_duration,
+
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    }, {
-
-        x: '+=100vw', ease: animation_duration,
-
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4--bis", scrub: true, overwrite: true, delay: 0,
-        }
-    });
+    );
     tl.fromTo('.scale-4--ter---right', {
 
-        x: '+=100vw', ease: animation_duration,
+            x: '+=100vw',
+            ease: animation_duration,
 
-        scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4--bis", scrub: true, overwrite: true, delay: 0,
-        }
-    }, {
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
+        },
+        {
 
-        x: '-=150vw', ease: animation_duration, onComplete: () => treeBackward(), scrollTrigger: {
-            start: "center center", end: "bottom top", trigger: ".scale-4--bis", scrub: true, overwrite: true, delay: 0,
+            x: '-=150vw',
+            ease: animation_duration,
+            onComplete: () => treeBackward(),
+            scrollTrigger: {
+                start: "center center",
+                end: "bottom top",
+                trigger: ".scale-4--bis",
+                scrub: true,
+                overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
 
     function scale4_fadeout() {
         if (document.querySelector(".scale-4")) {
@@ -748,10 +1018,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(".scale-4--category---infrastructure").classList.remove('active');
             document.querySelector(".scale-4--category---agriculture").classList.remove('active');
             tl.to('.scale-4--description', {
-                onStart: () => scale4_fadeoutNumber(), opacity: 0, // delay:1.5,
+                    onStart: () => scale4_fadeoutNumber(),
+                    opacity: 0,
+                    // delay:1.5,
 
-                duration: 0.5,
-            });
+                    duration: 0.5,
+                }
+            );
             document.querySelector(".scale-4--container").classList.add('active');
         }
         // document.querySelector('.scale-4--illustration---first').classList.add('removeBg');
@@ -761,23 +1034,23 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function smokeAppear() {
-        if (document.querySelector(".scale-4--bis---cloud")) {
+        if(document.querySelector(".scale-4--bis---cloud")) {
             document.querySelector(".scale-4--bis---cloud").classList.remove('hidden');
         }
     }
 
     function treeBackward() {
-        if (document.querySelector(".scale-4--ter")) {
+        if (document.querySelector(".scale-4--ter")){
             document.querySelector(".scale-4--ter---left").classList.add('backward');
-            document.querySelector(".scale-4--ter---right").classList.add('backward');
-            document.querySelector(".scale-4--bis").classList.add('hide');
-            document.querySelector(".scale-4").classList.add('hide');
-            document.querySelector(".scale-4--ter---MapContainer").classList.remove('hide');
-            setTimeout(() => {
-                document.querySelector(".scale-4--ter---left").classList.add('remove');
-                document.querySelector(".scale-4--ter---right").classList.add('remove');
-            }, 5000);
-        }
+        document.querySelector(".scale-4--ter---right").classList.add('backward');
+        document.querySelector(".scale-4--bis").classList.add('hide');
+        document.querySelector(".scale-4").classList.add('hide');
+        document.querySelector(".scale-4--ter---MapContainer").classList.remove('hide');
+        setTimeout(() => {
+            document.querySelector(".scale-4--ter---left").classList.add('remove');
+            document.querySelector(".scale-4--ter---right").classList.add('remove');
+        }, 5000);
+    }
 
     }
 
@@ -803,7 +1076,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // x: "-=10vw",
         // scale: 0.5,
         // opacity: 0,
-        onStart: () => mapfadeout(), scrub: true, inertia: false, ease: animation_duration, scrollTrigger: {
+        onStart: () => mapfadeout(),
+        scrub: true,
+        inertia: false,
+        ease: animation_duration,
+        scrollTrigger: {
             inertia: false,
             start: "center center",
             end: "bottom top",
@@ -821,7 +1098,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     tl.from(".dezoom-quinquies--illustration---brain", {
-        y: "-=380vh", scale: 7, delay: 0.1, scrub: true, inertia: false, ease: animation_duration, scrollTrigger: {
+        y: "-=380vh",
+        scale: 7,
+        delay: 0.1,
+        scrub: true,
+        inertia: false,
+        ease: animation_duration,
+        scrollTrigger: {
             inertia: false,
             start: "center center",
             end: "center center",
@@ -835,46 +1118,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     tl.to('.solutionFirst--illustration---container', {
-        morphSVG: '.solutionFirst--illustration---bottle', onComplete: () => carbon(), duration: 1, scrollTrigger: {
-            // inertia: false,
-            start: "top center", end: "center center", trigger: ".solutionFirst", scrub: true, // overwrite: true,
-            delay: 0,
+            morphSVG: '.solutionFirst--illustration---bottle',
+            onComplete: () => carbon(),
+            duration: 1,
+            scrollTrigger: {
+                // inertia: false,
+                start: "top center",
+                end: "center center",
+                trigger: ".solutionFirst",
+                scrub: true,
+                // overwrite: true,
+                delay: 0,
+            }
         }
-    });
+    );
 
     function carbon() {
         tl.to('.solutionFirst--illustration---container', {
-            morphSVG: '.solutionFirst--illustration---carbon', onComplete: () => apple(), delay: 1, duration: 1
-        });
+                morphSVG: '.solutionFirst--illustration---carbon',
+                onComplete: () => apple(),
+                delay: 1,
+                duration: 1
+            }
+        );
     }
 
     function apple() {
         tl.to('.solutionFirst--illustration---container', {
-            morphSVG: '.solutionFirst--illustration---apple', onComplete: () => impact(), delay: 1, duration: 1
-        });
+                morphSVG: '.solutionFirst--illustration---apple',
+                onComplete: () => impact(),
+                delay: 1,
+                duration: 1
+            }
+        );
     }
 
     function impact() {
         tl.to('.solutionFirst--illustration---container', {
-            morphSVG: '.solutionFirst--illustration---impact', onComplete: () => bottle(), delay: 1, duration: 1
-        });
+                morphSVG: '.solutionFirst--illustration---impact',
+                onComplete: () => bottle(),
+                delay: 1,
+                duration: 1
+            }
+        );
     }
 
     function bottle() {
         tl.to('.solutionFirst--illustration---container', {
-            morphSVG: '.solutionFirst--illustration---bottle', onComplete: () => transport(), delay: 1, duration: 1
-        });
+                morphSVG: '.solutionFirst--illustration---bottle',
+                onComplete: () => transport(),
+                delay: 1,
+                duration: 1
+            }
+        );
     }
 
     function transport() {
         tl.to('.solutionFirst--illustration---container', {
-            morphSVG: '.solutionFirst--illustration---transport', onComplete: () => carbon(), delay: 1, duration: 1
-        });
+                morphSVG: '.solutionFirst--illustration---transport',
+                onComplete: () => carbon(),
+                delay: 1,
+                duration: 1
+            }
+        );
     }
 
     gsap.from('.solutionSecond--illustration--data', {
-        textContent: 0, duration: 4, ease: Power1.easeIn, snap: {textContent: 1}, stagger: 1, delay: 1, scrollTrigger: {
-            start: "top bottom", end: "center center", trigger: ".solutionSecond", overwrite: true,
+        textContent: 0,
+        duration: 4,
+        ease: Power1.easeIn,
+        snap: {textContent: 1},
+        stagger: 1,
+        delay: 1,
+        scrollTrigger: {
+            start: "top bottom",
+            end: "center center",
+            trigger: ".solutionSecond",
+            overwrite: true,
 
         }
     });
@@ -899,11 +1219,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     views.forEach((view, i) => {
         ScrollTrigger.create({
-            trigger: view, onEnter: () => goToSection(i)
+            trigger: view,
+            onEnter: () => goToSection(i)
         });
 
         ScrollTrigger.create({
-            trigger: view, start: "bottom bottom", onEnterBack: () => goToSection(i),
+            trigger: view,
+            start: "bottom bottom",
+            onEnterBack: () => goToSection(i),
 
         });
     });
@@ -915,7 +1238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         inertia: false,
         ease: animation_duration,
         duration: time_duration,
-        onUpdate: (ScrollTrigger) => progressBar(ScrollTrigger.progress, views.length),
+        onUpdate: (ScrollTrigger) =>
+            progressBar(ScrollTrigger.progress, views.length)
+        ,
         overwrite: true,
         scrub: false,
         snap: 1 / (views.length - 1),
