@@ -94,7 +94,6 @@
             &--steak {
                 margin: auto;
                 position: relative;
-                z-index: -2;
             }
         }
 
@@ -103,66 +102,7 @@
                 opacity: 0;
                 width: auto;
                 height: auto;
-                z-index: -1;
-                transition: 1.5s opacity linear;
-
-            }
-
-            &--data, &--bis---data, &--ter---data {
-
-                &---left {
-                    opacity: 0;
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-                    position: absolute;
-                    left: 29%;
-                    transform: translate(-50%, 30vh);
-                    transition: opacity 150ms linear;
-                    &.hide {
-                        opacity: 0!important;
-                    }
-
-                }
-
-                &---right {
-                    opacity: 0;
-                    display: flex;
-                    flex-direction: column;
-                    text-align: center;
-                    position: absolute;
-                    right: 28%;
-                    transform: translate(50%, 30vh);
-                    transition: opacity 150ms linear;
-                    &.hide {
-                        opacity: 0!important;
-                    }
-
-                }
-
-                &Number {
-                    font-weight: 700;
-                    line-height: 120%;
-                    font-size: 4.8rem;
-                }
-
-                &Text {
-                    font-weight: 600;
-                    line-height: 120%;
-                    font-size: 2.4rem;
-                }
-            }
-
-            &--bis---data, &--ter---data {
-                &---left {
-                    transform: translate(-50%, 75vh);
-                }
-
-                &---right {
-                    transform: translate(50%, 75vh);
-
-
-                }
+                //z-index: -1;
             }
         }
 
@@ -470,7 +410,7 @@
                 }
 
                 &---cloud {
-                    left: 47%;
+                    left: 50%;
                     position: absolute;
                     transform: translateX(-50%);
                     transition: 1s linear;
@@ -574,7 +514,6 @@
                         &-map {
                             border: 2px $color_mixWB solid;
                         }
-
                         &-canvas {
                             cursor: none;
                         }
@@ -629,11 +568,9 @@
                             border-color: $color-white;
                             text-transform: unset;
                             transition: all 300ms linear;
-
                             &:hover {
                                 color: $color-secondary;
                             }
-
                             &.active {
                                 color: $color-secondary;
                                 border-color: $color-secondary;
@@ -655,57 +592,48 @@
                                 display: flex;
                                 justify-content: flex-start;
                                 align-items: center;
-
                                 &-----item {
                                     &-First,
                                     &-Second,
                                     &-Third,
                                     &-Four,
-                                    &-Five,
-                                    &-Six {
+                                    &-Five {
                                         font-style: normal;
                                         font-weight: 700;
                                         font-size: 1.6rem;
                                         line-height: 120%;
                                     }
                                 }
-
                                 &-----gradiantIllustration {
                                     &-First,
                                     &-Second,
                                     &-Third,
                                     &-Four,
-                                    &-Five,
-                                    &-Six {
+                                    &-Five {
                                         height: 3.3rem;
                                         width: 5.3rem;
                                         margin-right: 2.6rem;
                                         border: 0.2rem solid $color_secondary;
                                     }
+                                     &-First {
+                                         background: $color_secondary;
+                                     }
 
-                                    &-First {
-                                        background: $color_secondary;
-                                    }
+                                     &-Second {
+                                         background: rgba(197, 45, 72, 0.75);
+                                     }
 
-                                    &-Second {
-                                        background: rgba(197, 45, 72, 0.75);
-                                    }
+                                     &-Third {
+                                         background: rgba(197, 45, 72, 0.5);
+                                     }
 
-                                    &-Third {
-                                        background: rgba(197, 45, 72, 0.5);
-                                    }
+                                     &-Four {
+                                         background: rgba(197, 45, 72, 0.25);
+                                     }
 
-                                    &-Four {
-                                        background: rgba(197, 45, 72, 0.25);
-                                    }
-
-                                    &-Five {
-                                        background: rgba(197, 45, 72, 0);
-                                    }
-
-                                    &-Six {
-                                        background: $color_black;
-                                    }
+                                     &-Five {
+                                         background: rgba(197, 45, 72, 0);
+                                     }
                                 }
                             }
 
@@ -852,11 +780,6 @@
     }
 
     .dezoom {
-        &-lottie {
-            transition: 1.5s opacity linear;
-            scale: 1.4 1.55;
-            transform: translate(-68px, -10px);
-        }
         &-bis {
             display: flex;
             justify-content: center;
@@ -956,7 +879,7 @@
                     left: 15%;
                     top: 12rem;
                     transition: 1.5s opacity linear;
-                    opacity: 0;
+                    opacity: 1;
                 }
 
                 &---body {
@@ -1148,7 +1071,6 @@
         &--illustration {
             position: absolute;
             bottom: 0;
-
             :hover {
                 background-image: red;
             }

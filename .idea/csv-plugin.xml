@@ -17,20 +17,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\frontend\static\data\population_urbaine_2017.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\frontend\static\data\reseau_routier_2018.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value=";" />
-            </Attribute>
-          </value>
-        </entry>
       </map>
     </option>
   </component>

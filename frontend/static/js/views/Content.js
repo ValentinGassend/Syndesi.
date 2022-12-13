@@ -29,34 +29,10 @@ export default class extends AbstractView {
     <section class="scale-2 view">
         <lottie-player class="scale-2--lottie" src="/static/lottie/comparatif_dataviz.json" background="transparent"
                        speed="1" loop></lottie-player>
-        <div class="scale-2--data---left">
-            <p class="scale-2--dataNumber">1</p>
-            <p class="scale-2--dataText">steak</p>
-        </div> 
-        <div class="scale-2--data---right">
-            <p class="scale-2--dataNumber">16</p>
-            <p class="scale-2--dataText">paquets de pâtes</p>
-        </div>
     </section>
     <section class="scale-2--bis view">
-        <div class="scale-2--bis---data---left">
-            <p class="scale-2--bis---dataNumber">1</p>
-            <p class="scale-2--bis---dataText">steak</p>
-        </div>
-        <div class="scale-2--bis---data---right">
-            <p class="scale-2--bis---dataNumber">2</p>
-            <p class="scale-2--bis---dataText">pavé de cabillaud</p>
-        </div>
     </section>
     <section class="scale-2--ter view">
-        <div class="scale-2--ter---data---left">
-            <p class="scale-2--ter---dataNumber">1</p>
-            <p class="scale-2--ter---dataText">steak</p>
-        </div>
-        <div class="scale-2--ter---data---right">
-            <p class="scale-2--ter---dataNumber">105</p>
-            <p class="scale-2--ter---dataText">carottes</p>
-        </div>
     </section>
     <section class="scale-3 view">
         <div class="scale-3--images hidden">
@@ -197,27 +173,23 @@ export default class extends AbstractView {
                     <div class="scale-4--ter---legendScale----gradiant">
                         <div class="scale-4--ter---legendScale----gradiantData">
                             <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-First"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-First">1820000000</p>
+                            <p class="scale-4--ter---legendScale----gradiantData-----item-First">200</p>
                         </div>
                         <div class="scale-4--ter---legendScale----gradiantData">
                             <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-Second"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-Second">7630000</p>
+                            <p class="scale-4--ter---legendScale----gradiantData-----item-Second">200</p>
                         </div>
                         <div class="scale-4--ter---legendScale----gradiantData">
                             <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-Third"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-Third">630000</p>
+                            <p class="scale-4--ter---legendScale----gradiantData-----item-Third">200</p>
                         </div>
                         <div class="scale-4--ter---legendScale----gradiantData">
                             <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-Four"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-Four">13100</p>
+                            <p class="scale-4--ter---legendScale----gradiantData-----item-Four">200</p>
                         </div>
                         <div class="scale-4--ter---legendScale----gradiantData">
                             <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-Five"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-Five">0</p>
-                        </div>
-                        <div class="scale-4--ter---legendScale----gradiantData">
-                            <div class="scale-4--ter---legendScale----gradiantData-----gradiantIllustration-Six"></div>
-                            <p class="scale-4--ter---legendScale----gradiantData-----item-Six">Absence de données</p>
+                            <p class="scale-4--ter---legendScale----gradiantData-----item-Five">200</p>
                         </div>
                     </div>
                 </div>
@@ -239,8 +211,6 @@ export default class extends AbstractView {
         </div>
     </section>
     <section class="dezoom view">
-    <lottie-player class="dezoom-lottie" src="/static/lottie/transition_carte_cerveau.json" background="transparent"
-                       speed="1" ></lottie-player>
     </section>
     <section class="dezoom-bis view">
     <div class="dezoom-bis--container">  
@@ -320,13 +290,13 @@ export default class extends AbstractView {
     </section>
     <section class="end container-small view" id="solutionSecond">
         <div class="end-containerText">
-            <p class="end--title">Dis moi, Valentin</p>
-            <p class="end--text">maintenant que tu en sais un peu plus sur le sujet,</p>
+            <p class="end--title">Alors IEL,</p>
+            <p class="end--text">maintenant que tu en sais un peu plus sur le sujet</p>
             <p class="end--text">que souhaites-tu faires ?</p>
         </div>
         <div class="end-buttonContainer">
-        <a href="/home" class="end-btn--gallery button-primary">VOIR LA GALLERIE</a>
-        <a href="/end" class="end-btn--end button-primary">VOIR LA CONCLUSION</a>
+        <a href="/home" class="end-btn--gallery button-primary">continuer l'experience</a>
+        <a href="/end" class="end-btn--end button-primary">finir l'experience</a>
         </div>
             <a class="end--illustration" href="/ilovedata"><img src="/static/image/whole_iel.svg"/></a>
 
