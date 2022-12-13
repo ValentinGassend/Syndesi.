@@ -33,9 +33,11 @@ const navigateTo = url => {
 
 const router = async () => {
     const routes = [{path: "/intro", view: Intro}, {path: "/legal", view: Legal}, {
-        path: "/sources", view: Sources
+        path: "/sources",
+        view: Sources
     }, {path: "/end", view: End}, {path: "/home", view: Gallery}, {
-        path: "/ilovedata", view: Affiche
+        path: "/ilovedata",
+        view: Affiche
     }, {path: "/content", view: Content}];
 
     // Test each route for potential match
@@ -320,10 +322,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     tl.to(".scale-2--lottie", {
-        y: "+=100vh", scrub: true, // overwrite: true,
+        y: "+=100vh",
+        scrub: true, // overwrite: true,
 
         // immediateRender: true,
-        ease: animation_duration, onUpdate: () => LottiePlay_phase2(), onComplete: () => LottieGsap_phase3(), // transformOrigin: "50% 50%",
+        ease: animation_duration,
+        onUpdate: () => LottiePlay_phase2(),
+        onComplete: () => LottieGsap_phase3(), // transformOrigin: "50% 50%",
         scrollTrigger: {
             // immediateRender: true,
             start: "center center", end: "bottom top", trigger: ".scale-2", // pin: true,

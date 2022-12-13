@@ -19,7 +19,7 @@
             color: white;
             opacity: 0.5;
             transition: all 0.3s ease-in-out;
-            background-image: url("/static/image/dot.svg");
+            background-image: url("../image/dot.svg");
             background-repeat: no-repeat;
             background-position: center;
 
@@ -79,7 +79,7 @@
             opacity: 0.5;
             scale: 0.9;
             transition: all 0.3s ease-in-out;
-            background-image: url("/static/image/dot.svg");
+            background-image: url("../image/dot.svg");
             background-repeat: no-repeat;
             background-position: center;
             transform: translate(-50%);

@@ -318,7 +318,7 @@ export default class extends AbstractView {
             <div class="solutionSecond--illustration--desc">arbres plantés par Ecosia</div>
         </div>
     </section>
-    <section class="end container-small view">
+    <section class="end container-small view" id="solutionSecond">
         <div class="end-containerText">
             <p class="end--title">Dis moi, Valentin</p>
             <p class="end--text">maintenant que tu en sais un peu plus sur le sujet,</p>

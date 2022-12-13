@@ -1363,6 +1363,9 @@ input {
   position: absolute;
   bottom: 0;
 }
+.content .end--illustration :hover {
+  background-image: red;
+}
 
 .gallery .steak {
   width: 100vw;
