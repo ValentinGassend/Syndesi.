@@ -925,11 +925,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //SCROLL SNAP END
     if (document.querySelector('.content')) {
         document.querySelector('.overlay').style.display = "block";
-        gsap.timeline().to(".info-name", {duration: 1.5, text: "comprendre l’impact"});
+        gsap.timeline().to(".info-name", {duration: 1.5, text: "Quotidien de Valentin"});
     }
     if (document.querySelector('.gallery')) {
         document.querySelector('.overlay').style.display = "block";
-        gsap.timeline().to(".info-name", {duration: 1.5, text: "Quotidien de Valentin"});
+        gsap.timeline().to(".info-name", {duration: 1.5, text: "gallerie synapse"});
     }
     if (document.querySelector('.intro')) {
         document.querySelector('.overlay').style.display = "none";

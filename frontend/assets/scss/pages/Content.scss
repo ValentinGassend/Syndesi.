@@ -118,9 +118,8 @@
                     left: 29%;
                     transform: translate(-50%, 30vh);
                     transition: opacity 150ms linear;
-
                     &.hide {
-                        opacity: 0 !important;
+                        opacity: 0!important;
                     }
 
                 }
@@ -134,9 +133,8 @@
                     right: 28%;
                     transform: translate(50%, 30vh);
                     transition: opacity 150ms linear;
-
                     &.hide {
-                        opacity: 0 !important;
+                        opacity: 0!important;
                     }
 
                 }
@@ -859,7 +857,6 @@
             scale: 1.4 1.55;
             transform: translate(-68px, -10px);
         }
-
         &-bis {
             display: flex;
             justify-content: center;
@@ -1151,6 +1148,11 @@
         &--illustration {
             position: absolute;
             bottom: 0;
+
+            :hover {
+                background-image: red;
+            }
         }
     }
+
 }
